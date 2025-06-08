@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpanX</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/LOGO WITH FONT.png" alt="SpanX Logo">
+            </div>
+
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+             <!-- Search Bar -->
+    <div class="search-container">
+        <!-- Search Icon -->
+        <div class="search-icon" onclick="toggleSearch()">
+            <i class="fas fa-search"></i>
+        </div>
+        <!-- Search Input -->
+        <input type="text" id="searchInput" placeholder="Search products..." oninput="showSuggestions()">
+        <!-- Suggestions Dropdown -->
+        <div id="suggestions" class="suggestions"></div>
+    </div>
+</div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="review.html">Review</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleNav()">
+
+            </div>
+            
+     
+
+    <script>
+       // Toggle search bar on mobile
+function toggleSearch() {
+    const searchInput = document.getElementById('searchInput');
+    searchInput.classList.toggle('active');
+    if (searchInput.classList.contains('active')) {
+        searchInput.focus();
+    }
+}
+
+// Sample product data
+const products = [
+    { name: "Diesel Engine Oil", link: "dieselengineoil.html" },
+    { name: "Petrol Engine Oil", link: "petroloil.html" },
+    { name: "Grease", link: "lithiumgrease.html" },
+    { name: "Coolant", link: "antifreeze.html" },
+    { name: "Brake Fluid", link: "brakefluid.html" },
+    { name: "Turbine Oil", link: "turbine.html" },
+    { name: "Hydraulic Oil", link: "hydraulicoil.html" }
+    
+   
+];
+
+function showSuggestions() {
+    const input = document.getElementById('searchInput').value.toLowerCase();
+    const suggestions = document.getElementById('suggestions');
+    suggestions.innerHTML = '';
+
+    if (input.length > 0) {
+        const filteredProducts = products.filter(product => 
+            product.name.toLowerCase().includes(input)
+        );
+
+        if (filteredProducts.length > 0) {
+            filteredProducts.forEach(product => {
+                const div = document.createElement('div');
+                div.textContent = product.name;
+                div.classList.add('suggestion-item'); // Add a class for easier identification
+                div.onclick = () => {
+                    window.location.href = product.link;
+                };
+                suggestions.appendChild(div);
+            });
+            suggestions.style.display = 'block';
+        } else {
+            suggestions.style.display = 'none';
+        }
+    } else {
+        suggestions.style.display = 'none';
+    }
+}
+
+// Close search bar and suggestions when clicking outside
+document.addEventListener('click', function(event) {
+    const suggestions = document.getElementById('suggestions');
+    const searchInput = document.getElementById('searchInput');
+    const searchIcon = document.querySelector('.search-icon'); // Get the search icon
+    const searchContainer = document.querySelector('.search-container');
+    
+    // Check if the click is on the search icon (to toggle)
+    if (searchIcon.contains(event.target)) {
+        return; // Let the toggleSearch function handle this
+    }
+    
+    // If search is active and click is outside search area, close it
+    if (searchInput.classList.contains('active') && 
+        !searchInput.contains(event.target) && 
+        !suggestions.contains(event.target) &&
+        !searchIcon.contains(event.target)) {
+        
+        searchInput.classList.remove('active'); // Close the search bar
+        suggestions.style.display = 'none'; // Hide suggestions
+    }
+});
+
+// Prevent clicks within the search container from closing it
+document.querySelector('.search-container').addEventListener('click', function(event) {
+    event.stopPropagation();
+});
+
+    </script>
+
+            </div>    
+               
+        </nav>
+    </header>
+    <main>
+        <div class="hero">
+            <video autoplay muted loop playsinline>
+                <source src="images/bgvid.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <!-- Your content here -->
+        </div>
+        </div>
+        <div class="fixed-contact">
+            <a href="tel:+968 7831 0160" class="phone-icon" target="_blank">
+                <img src="images/icons8-phone.gif" alt="Phone">
+            </a>
+            <a href="https://wa.me/+96878310160" class="whatsapp-icon" target="_blank">
+                <img src="images/icons8-whatsapp.gif" alt="WhatsApp">
+            </a>
+        </div>
+        
+        </div>
+
+        <div class="runner-banner">
+          <div class="runner-loop">
+              <!-- Original items -->
+              <div class="runner-item">
+                  <img src="images/hydricon.png" alt="HYDRAULIC">
+                  <h3>HYDRAULIC OIL</h3>
+                  <p>A fluid used in hydraulic systems to transmit power, reduce friction, and protect components.</p>
+              </div>
+              <div class="runner-item">
+                  <img src="images/break.png" alt="Brake Fluid">
+                  <h3>BRAKE FLUID</h3>
+                  <p>Brake Fluids are formulated from high-quality glycols.</p>
+              </div>
+              <div class="runner-item">
+                  <img src="images/dies.png" alt="Diesel Engine Oil">
+                  <h3>DIESEL ENGINE OIL</h3>
+                  <p>Diesel Engine oils are formulated to meet the requirements.</p>
+              </div>
+              <div class="runner-item">
+                  <img src="images/gear.png" alt="Gear Oil">
+                  <h3>GEAR OIL</h3>
+                  <p>Gear oils are formulated from selected high-quality mineral base oils.</p>
+              </div>
+              <div class="runner-item">
+                  <img src="images/anti.png" alt="Anti-Freeze Coolants">
+                  <h3>ANTI-FREEZE COOLANTS</h3>
+                  <p>Anti-freeze coolant is formulated from premium quality glycols.</p>
+              </div>
+              <div class="runner-item">
+                  <img src="images/calc.png" alt="CALCIUM">
+                  <h3>CALCIUM GREASES</h3>
+                  <p>Its a water-resistant lubricant used for protecting metal parts in low-temperature and high-moisture conditions.</p>
+              </div>
+              <div class="runner-item">
+                  <img src="images/auto.png" alt="AUTO">
+                  <h3>TRANSMISSION Oil</h3>
+                  <p>Its a specialized fluid that lubricates, cools, and enables smooth gear shifts in automatic transmissions</p>
+              </div>
+              <div class="runner-item">
+                  <img src="images/lith.png" alt="LITHIUM">
+                  <h3>LITHIUM GREASES</h3>
+                  <p>Its a durable lubricant used for reducing friction and protecting metal parts</p>
+              </div>
+      
+              <!-- Newly Added Items -->
+              <div class="runner-item">
+                  <img src="images/petrolicon.png" alt="Petrol Engine Oil">
+                  <h3>PETROL ENGINE OIL</h3>
+                  <p>Its a high-performance lubricant designed for petrol engines to reduce wear and improve efficiency.</p>
+              </div>
+              <div class="runner-item">
+                  <img src="images/marine.png" alt="Marine Oil">
+                  <h3>MARINE OIL</h3>
+                  <p>Its a specialized oil used in marine engines to withstand harsh conditions and prevent corrosion.</p>
+              </div>
+              <div class="runner-item">
+                  <img src="images/turbine.png" alt="Turbine Oil">
+                  <h3>TURBINE OIL</h3>
+                  <p>Its a high-quality oil used in turbines to ensure smooth operation and reduce wear.</p>
+              </div>
+              <div class="runner-item">
+                  <img src="images/soluble.png" alt="Soluble Oil">
+                  <h3>SOLUBLE OIL</h3>
+                  <p>Its a cutting fluid used in machining operations to cool and lubricate the workpiece and tool.</p>
+              </div>
+              <div class="runner-item">
+                  <img src="images/2t4t.png" alt="2T/4T Oil">
+                  <h3>2T/4T OIL</h3>
+                  <p>Its a two-stroke or four-stroke engine oil designed for motorcycles and small engines.</p>
+              </div>
+      
+              <!-- Duplicate Items for Seamless Loop -->
+              <div class="runner-item">
+                  <img src="images/hydricon.png" alt="HYDRAULIC">
+                  <h3>HYDRAULIC OIL</h3>
+                  <p>A fluid used in hydraulic systems to transmit power, reduce friction, and protect components.</p>
+              </div>
+              <div class="runner-item">
+                  <img src="images/break.png" alt="Brake Fluid">
+                  <h3>BRAKE FLUID</h3>
+                  <p>Brake Fluids are formulated from high-quality glycols.</p>
+              </div>
+              <div class="runner-item">
+                  <img src="images/dies.png" alt="Diesel Engine Oil">
+                  <h3>DIESEL ENGINE OIL</h3>
+                  <p>Diesel Engine oils are formulated to meet the requirements.</p>
+              </div>
+              <div class="runner-item">
+                  <img src="images/gear.png" alt="Gear Oil">
+                  <h3>GEAR OIL</h3>
+                  <p>Gear oils are formulated from selected high-quality mineral base oils.</p>
+              </div>
+              <div class="runner-item">
+                  <img src="images/anti.png" alt="Anti-Freeze Coolants">
+                  <h3>ANTI-FREEZE COOLANTS</h3>
+                  <p>Anti-freeze coolant is formulated from premium quality glycols.</p>
+              </div>
+              <div class="runner-item">
+                  <img src="images/calc.png" alt="CALCIUM">
+                  <h3>CALCIUM GREASES</h3>
+                  <p>Its a water-resistant lubricant used for protecting metal parts in low-temperature and high-moisture conditions.</p>
+              </div>
+              <div class="runner-item">
+                  <img src="images/auto.png" alt="AUTO">
+                  <h3>TRANSMISSION Oil</h3>
+                  <p>Its a specialized fluid that lubricates, cools, and enables smooth gear shifts in automatic transmissions</p>
+              </div>
+              <div class="runner-item">
+                  <img src="images/lith.png" alt="LITHIUM">
+                  <h3>LITHIUM GREASES</h3>
+                  <p>Its a durable lubricant used for reducing friction and protecting metal parts</p>
+              </div>
+              <div class="runner-item">
+                  <img src="images/petrolicon.png" alt="Petrol Engine Oil">
+                  <h3>PETROL ENGINE OIL</h3>
+                  <p>Its a high-performance lubricant designed for petrol engines to reduce wear and improve efficiency.</p>
+              </div>
+              <div class="runner-item">
+                  <img src="images/marine.png" alt="Marine Oil">
+                  <h3>MARINE OIL</h3>
+                  <p>Its a specialized oil used in marine engines to withstand harsh conditions and prevent corrosion.</p>
+              </div>
+              <div class="runner-item">
+                  <img src="images/turbine.png" alt="Turbine Oil">
+                  <h3>TURBINE OIL</h3>
+                  <p>Its a high-quality oil used in turbines to ensure smooth operation and reduce wear.</p>
+              </div>
+              <div class="runner-item">
+                  <img src="images/soluble.png" alt="Soluble Oil">
+                  <h3>SOLUBLE OIL</h3>
+                  <p>Its a cutting fluid used in machining operations to cool and lubricate the workpiece and tool.</p>
+              </div>
+              <div class="runner-item">
+                  <img src="images/2t4t.png" alt="2T/4T Oil">
+                  <h3>2T/4T OIL</h3>
+                  <p>Its a two-stroke or four-stroke engine oil designed for motorcycles and small engines.</p>
+              </div>
+          </div>
+      </div>
+
+
+
+      <section class="hero-section">
+        <div class="hero-content">
+            <h1>Powering Performance, Protecting Engines</h1>
+            <p>Premium Engine Oils & Lubricants for Ultimate Protection and Efficiency</p>
+            <a href="products.html" class="btn-primary">Explore Our Products</a>
+        </div>
+    </section>
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Seamless Product Runner</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Product Container */
+        .product-container {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            color: #fff;
+            height: 400px;
+            -webkit-tap-highlight-color: transparent;
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+        }
+
+        /* Overlay */
+        .product-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Runner Container - Fixed for mobile with proper overflow */
+        .runner-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            padding: 0;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            -webkit-overflow-scrolling: touch;
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            /* Ensure container spans full width */
+            min-width: 100%;
+        }
+
+        /* Runner Track - Seamless infinite scroll with mobile fix */
+        .runner-track {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 0;
+            position: relative;
+            
+            /* Fast animation for desktop */
+            animation: seamlessScroll 15s linear infinite;
+            
+            /* Critical optimizations for all devices */
+            will-change: transform;
+            transform: translate3d(0, 0, 0);
+            -webkit-transform: translate3d(0, 0, 0);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            
+            /* Ensure proper width calculation - removed min-width constraint */
+            width: fit-content;
+            /* Allow natural width expansion */
+            flex-shrink: 0;
+        }
+
+        /* Paused state */
+        .runner-track.paused {
+            animation-play-state: paused;
+        }
+
+        /* Runner Items - Mobile optimized */
+        .runner-items {
+            flex: 0 0 200px;
+            height: 280px;
+            text-align: center;
+            background-color: rgba(255, 238, 1, 0.95);
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            cursor: pointer;
+            user-select: none;
+            
+            /* Cross-platform rendering optimizations */
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+            will-change: transform;
+            
+            /* Prevent layout shifts */
+            min-width: 200px;
+            max-width: 200px;
+        }
+
+        /* Active/Clicked state */
+        .runner-items.active {
+            transform: scale(1.05) translateZ(0);
+            box-shadow: 0 8px 20px rgba(255, 238, 1, 0.5);
+            z-index: 10;
+        }
+
+        /* Hover Effect - desktop only */
+        @media (hover: hover) and (pointer: fine) {
+            .runner-items:hover {
+                transform: translateY(-5px) translateZ(0);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        /* Product Image */
+        .runner-items img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+            display: block;
+        }
+
+        /* Product Title */
+        .runner-items h3 {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #2c3e50;
+            font-weight: 700;
+            line-height: 1.2;
+            max-height: 2.4em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Seamless scroll animation - Optimized speeds */
+        @keyframes seamlessScroll {
+            0% {
+                transform: translate3d(0, 0, 0);
+            }
+            100% {
+                transform: translate3d(-50%, 0, 0);
+            }
+        }
+
+        /* Pause indicator */
+        .pause-indicator {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+        }
+
+        .pause-indicator.show {
+            opacity: 1;
+        }
+
+        /* Mobile specific styles - Faster speeds */
+        @media screen and (max-width: 768px) {
+            .product-container {
+                height: 350px;
+            }
+            
+            .runner-items {
+                flex: 0 0 180px;
+                height: 260px;
+                padding: 12px;
+                min-width: 180px;
+                max-width: 180px;
+            }
+            
+            .runner-items img {
+                height: 130px;
+            }
+            
+            .runner-items h3 {
+                font-size: 13px;
+                margin-top: 8px;
+            }
+            
+            .runner-track {
+                gap: 15px;
+                /* Fastest speed for mobile */
+                animation-duration: 12s;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .product-container {
+                height: 320px;
+            }
+            
+            .runner-items {
+                flex: 0 0 160px;
+                height: 240px;
+                padding: 10px;
+                min-width: 160px;
+                max-width: 160px;
+            }
+            
+            .runner-items img {
+                height: 110px;
+            }
+            
+            .runner-items h3 {
+                font-size: 12px;
+                margin-top: 6px;
+            }
+            
+            .runner-track {
+                gap: 12px;
+                /* Very fast for small mobile */
+                animation-duration: 10s;
+            }
+        }
+
+        /* Tablet specific speed - between mobile and desktop */
+        @media screen and (min-width: 769px) and (max-width: 1024px) {
+            .runner-track {
+                animation-duration: 13s;
+            }
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            .runner-track {
+                animation: none;
+            }
+            
+            .runner-track {
+                animation: reduceMotionScroll 60s linear infinite;
+            }
+        }
+
+        @keyframes reduceMotionScroll {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-10%, 0, 0); }
+        }
+
+        /* Force hardware acceleration on iOS */
+        @supports (-webkit-touch-callout: none) {
+            .runner-track {
+                -webkit-animation-fill-mode: both;
+                -webkit-transform: translate3d(0, 0, 0);
+            }
+            
+            .runner-items {
+                -webkit-transform: translate3d(0, 0, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="product-container">
+        <div class="pause-indicator" id="pauseIndicator">Paused - Tap background to resume</div>
+        <div class="runner-container">
+            <div class="runner-track" id="runnerTrack">
+                <!-- Original Automotive Products with your images -->
+                <div class="runner-items" data-product="brake-fluid">
+                    <img src="images/prodbrk.jpg" alt="Brake Fluid">
+                    <h3>BRAKE FLUID</h3>
+                </div>
+                <div class="runner-items" data-product="diesel-oil">
+                    <img src="images/proddeis.jpg" alt="Diesel Engine Oil">
+                    <h3>DIESEL ENGINE OIL</h3>
+                </div>
+                <div class="runner-items" data-product="gear-oil">
+                    <img src="images/prodgear.jpg" alt="Gear Oil">
+                    <h3>GEAR OIL</h3>
+                </div>
+                <div class="runner-items" data-product="coolants">
+                    <img src="images/prodcool.jpg" alt="Anti-Freeze Coolants">
+                    <h3>ANTI-FREEZE COOLANTS</h3>
+                </div>
+                <div class="runner-items" data-product="lithium-greases">
+                    <img src="images/prodlith.jpg" alt="Lithium Greases">
+                    <h3>LITHIUM GREASES</h3>
+                </div>
+                <div class="runner-items" data-product="calcium-greases">
+                    <img src="images/prodcal.jpg" alt="Calcium Greases">
+                    <h3>CALCIUM GREASES</h3>
+                </div>
+                <div class="runner-items" data-product="automatic-transmission">
+                    <img src="images/prodatf.jpg" alt="Automatic Transmission">
+                    <h3>AUTOMATIC TRANSMISSION OIL</h3>
+                </div>
+                <div class="runner-items" data-product="hydraulic-oil">
+                    <img src="images/prodhyd.jpg" alt="Hydraulic">
+                    <h3>HYDRAULIC TRANSMISSION OIL</h3>
+                </div>
+                <div class="runner-items" data-product="petrol-oil">
+                    <img src="images/prodpetr.jpg" alt="Petrol Engine Oil">
+                    <h3>PETROL ENGINE OIL</h3>
+                </div>
+                <div class="runner-items" data-product="turbine-oil">
+                    <img src="images/gear208.jpg" alt="Turbine Oil">
+                    <h3>TURBINE OIL</h3>
+                </div>
+                <div class="runner-items" data-product="soluble-oil">
+                    <img src="images/soluble-cutting-oil.jpg" alt="Soluble Oil">
+                    <h3>SOLUBLE OIL</h3>
+                </div>
+                <div class="runner-items" data-product="marine-oil">
+                    <img src="images/gear208.jpg" alt="Marine Oil">
+                    <h3>MARINE OIL</h3>
+                </div>
+                <div class="runner-items" data-product="2t-4t-oil">
+                    <img src="images/prodmoto.jpg" alt="2T/4T Oil">
+                    <h3>2T/4T OIL</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class SeamlessProductRunner {
+            constructor() {
+                this.runnerTrack = document.getElementById('runnerTrack');
+                this.pauseIndicator = document.getElementById('pauseIndicator');
+                this.container = document.querySelector('.product-container');
+                this.isPaused = false;
+                this.pauseTimeout = null;
+                this.isMobile = window.innerWidth <= 768;
+                
+                this.init();
+            }
+            
+            init() {
+                this.duplicateItems();
+                this.setupEventListeners();
+                this.handleResize();
+            }
+            
+            duplicateItems() {
+                // Get all original items
+                const originalItems = Array.from(this.runnerTrack.children);
+                
+                // Clone items multiple times for better infinite scroll on mobile
+                const cloneCount = this.isMobile ? 3 : 2; // More clones for mobile
+                
+                for (let i = 0; i < cloneCount; i++) {
+                    originalItems.forEach(item => {
+                        const clone = item.cloneNode(true);
+                        clone.classList.add('clone');
+                        this.runnerTrack.appendChild(clone);
+                    });
+                }
+                
+                // Calculate and set proper width with buffer
+                const itemWidth = this.isMobile ? (window.innerWidth <= 480 ? 172 : 195) : 220;
+                const gap = this.isMobile ? (window.innerWidth <= 480 ? 12 : 15) : 20;
+                const totalItems = this.runnerTrack.children.length;
+                const calculatedWidth = (itemWidth + gap) * totalItems;
+                
+                // Add extra buffer for mobile smooth scrolling
+                const bufferWidth = this.isMobile ? calculatedWidth * 0.5 : calculatedWidth * 0.2;
+                const totalWidth = calculatedWidth + bufferWidth;
+                
+                this.runnerTrack.style.width = `${totalWidth}px`;
+                
+                console.log('Mobile Debug:', {
+                    isMobile: this.isMobile,
+                    screenWidth: window.innerWidth,
+                    totalItems: totalItems,
+                    itemWidth: itemWidth,
+                    calculatedWidth: calculatedWidth,
+                    finalWidth: totalWidth
+                });
+            }
+            
+            setupEventListeners() {
+                // Handle product clicks/touches with better mobile support
+                this.runnerTrack.addEventListener('click', (e) => {
+                    const productItem = e.target.closest('.runner-items');
+                    if (productItem) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        this.handleProductClick(productItem);
+                    }
+                });
+                
+                // Handle touch events for mobile
+                this.runnerTrack.addEventListener('touchstart', (e) => {
+                    const productItem = e.target.closest('.runner-items');
+                    if (productItem) {
+                        e.preventDefault();
+                        this.handleProductClick(productItem);
+                    }
+                }, { passive: false });
+                
+                // Handle background clicks to resume
+                this.container.addEventListener('click', (e) => {
+                    if (!e.target.closest('.runner-items')) {
+                        this.resumeAnimation();
+                    }
+                });
+                
+                // Resume on background touch
+                this.container.addEventListener('touchstart', (e) => {
+                    if (!e.target.closest('.runner-items')) {
+                        this.resumeAnimation();
+                    }
+                });
+                
+                // Handle keyboard accessibility
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && this.isPaused) {
+                        this.resumeAnimation();
+                    }
+                });
+                
+                // Handle resize
+                window.addEventListener('resize', () => {
+                    this.handleResize();
+                });
+            }
+            
+            handleResize() {
+                const wasMobile = this.isMobile;
+                this.isMobile = window.innerWidth <= 768;
+                
+                if (wasMobile !== this.isMobile) {
+                    // Recalculate dimensions on mobile/desktop switch
+                    const itemWidth = this.isMobile ? (window.innerWidth <= 480 ? 172 : 195) : 220;
+                    const gap = this.isMobile ? (window.innerWidth <= 480 ? 12 : 15) : 20;
+                    const totalItems = this.runnerTrack.children.length;
+                    const calculatedWidth = (itemWidth + gap) * totalItems;
+                    
+                    // Add extra buffer for mobile smooth scrolling
+                    const bufferWidth = this.isMobile ? calculatedWidth * 0.5 : calculatedWidth * 0.2;
+                    const totalWidth = calculatedWidth + bufferWidth;
+                    
+                    this.runnerTrack.style.width = `${totalWidth}px`;
+                    
+                    console.log('Resize Debug:', {
+                        isMobile: this.isMobile,
+                        screenWidth: window.innerWidth,
+                        totalItems: totalItems,
+                        finalWidth: totalWidth
+                    });
+                }
+            }
+            
+            handleProductClick(productItem) {
+                // Clear any existing active states
+                document.querySelectorAll('.runner-items.active').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Add active state to clicked item
+                productItem.classList.add('active');
+                
+                // Pause animation
+                this.pauseAnimation();
+                
+                // Get product data
+                const productId = productItem.dataset.product;
+                const productTitle = productItem.querySelector('h3').textContent;
+                
+                console.log('Automotive Product clicked:', {
+                    id: productId,
+                    title: productTitle,
+                    category: 'Automotive Lubricants',
+                    device: this.isMobile ? 'mobile' : 'desktop'
+                });
+                
+                // Auto-resume after 3 seconds on mobile for better UX
+                if (this.isMobile) {
+                    this.pauseTimeout = setTimeout(() => {
+                        this.resumeAnimation();
+                    }, 3000);
+                }
+            }
+            
+            pauseAnimation() {
+                this.runnerTrack.classList.add('paused');
+                this.pauseIndicator.classList.add('show');
+                this.isPaused = true;
+                
+                // Clear any existing timeout
+                if (this.pauseTimeout) {
+                    clearTimeout(this.pauseTimeout);
+                }
+            }
+            
+            resumeAnimation() {
+                this.runnerTrack.classList.remove('paused');
+                this.pauseIndicator.classList.remove('show');
+                this.isPaused = false;
+                
+                // Remove active states
+                document.querySelectorAll('.runner-items.active').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Clear timeout
+                if (this.pauseTimeout) {
+                    clearTimeout(this.pauseTimeout);
+                    this.pauseTimeout = null;
+                }
+            }
+            
+            // Method to add new products dynamically
+            addProduct(productData) {
+                const productElement = document.createElement('div');
+                productElement.className = 'runner-items';
+                productElement.dataset.product = productData.id;
+                productElement.innerHTML = `
+                    <img src="${productData.image}" alt="${productData.title}">
+                    <h3>${productData.title}</h3>
+                `;
+                
+                // Add to both original and cloned sections
+                const cloneElement = productElement.cloneNode(true);
+                cloneElement.classList.add('clone');
+                
+                this.runnerTrack.appendChild(productElement);
+                this.runnerTrack.appendChild(cloneElement);
+                
+                // Recalculate width
+                this.handleResize();
+            }
+        }
+        
+        // Initialize the seamless product runner
+        document.addEventListener('DOMContentLoaded', () => {
+            new SeamlessProductRunner();
+        });
+        
+        // Prevent zoom on double tap for better mobile experience
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function (event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>
+
+      
+    <section class="trust-section">
+      <div class="trust-container">
+          <h2>Why Choose Us?</h2>
+          <div class="trust-stats">
+              <div class="trust-item">
+                  <img src="images/quality.webp" alt="Superior Quality">
+                  <h3>Superior Quality</h3>
+                  <p>Engineered for peak performance and longevity.</p>
+              </div>
+              <div class="trust-item">
+                  <img src="images/performance.png" alt="Maximized Performance">
+                  <h3>Maximized Performance</h3>
+                  <p>Enhancing efficiency with cutting-edge formulations.</p>
+              </div>
+              <div class="trust-item">
+                  <img src="images/prot.jpg.webp" alt="Ultimate Protection">
+                  <h3>Ultimate Protection</h3>
+                  <p>Reduces wear, ensuring smooth engine operation.</p>
+              </div>
+              <div class="trust-item">
+                  <img src="images/trust.png" alt="Trusted by Thousands">
+                  <h3>Trusted Worldwide</h3>
+                  <p>Proven reliability for thousands of customers.</p>
+              </div>
+          </div>
+      </div>
+  </section>
+
+
+ <!-- Stats Section -->
+<section class="stats-section">
+    <h2>Our Achievements</h2>
+    <div class="stats-grid">
+        <div class="stat-item">
+            <span class="stat-number" data-target="5000000">0</span>
+            <span class="stat-label">Liters of Engine Oil Delivered</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number" data-target="500">0</span>
+            <span class="stat-label">Happy Business Clients</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number" data-target="4">0</span>
+            <span class="stat-label">Years of Experience</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number" data-target="10000" data-plus="+">0</span>
+            <span class="stat-label">Bulk Orders Processed</span>
+        </div>
+    </div>
+</section>
+
+<!-- Embedded JavaScript -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const statsSection = document.querySelector(".stats-section");
+        const statNumbers = document.querySelectorAll(".stat-number");
+
+        const options = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.5,
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    statNumbers.forEach((statNumber) => {
+                        const target = +statNumber.getAttribute("data-target");
+                        const duration = 2000;
+                        const increment = target / (duration / 16);
+                        let current = 0;
+                        
+                        const updateNumber = () => {
+                            if (current < target) {
+                                current += increment;
+                                statNumber.textContent = Math.ceil(current).toLocaleString();
+                                requestAnimationFrame(updateNumber);
+                            } else {
+                                statNumber.textContent = target.toLocaleString();
+                                if (statNumber.hasAttribute("data-plus")) {
+                                    statNumber.textContent += "+";
+                                }
+                            }
+                        };
+
+                        updateNumber();
+                    });
+                } else {
+                    statNumbers.forEach((statNumber) => {
+                        statNumber.textContent = "0";
+                    });
+                }
+            });
+        }, options);
+
+        observer.observe(statsSection);
+    });
+</script>
+
+
+
+      
+<footer>
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-section quick-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+  
+        <div class="footer-section address">
+          <h3>Address</h3>
+          <p>AL MISFA, PO.BOX-2114, PC-133<br>SULTANATE OF OMAN</p>
+        </div>
+  
+        <div class="footer-section contact-info">
+          <h3>Contact</h3>
+          <p><a href="tel:+96878310160">+968 7831 0160</a></p>
+          <p><a href="tel:+96899888388">+968 9988 8388</a></p>
+          <p><a href="tel:+96876302027">+968 7630 2027</a></p>
+          <p><a href="tel:+96894313997">+968 9431 3997</a></p>
+          <p>Email: <a href="mailto:spanxlubes@gmail.com">spanxlubes@gmail.com</a></p>
+        </div>
+  
+        <div class="footer-section follow-us">
+          <h3>Follow Us</h3>
+          <a href="https://www.instagram.com/spanxlubes?igsh=MTA3bzg3ZnJsc3VpeA==">Facebook</a><br>
+          <a href="https://www.instagram.com/spanxlubes?igsh=MTA3bzg3ZnJsc3VpeA==">Instagram</a>
+        </div>
+  
+        <div class="footer-section contact-us">
+          <h3>Contact Us</h3>
+          <form action="https://api.web3forms.com/submit" method="POST" onsubmit="return validateForm()">
+            <input type="hidden" name="access_key" value="3c980544-1eb9-4c02-9ddd-e0d98ed524dd">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <textarea name="message" placeholder="Message" required></textarea>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Spanx. All rights reserved.</p>
+    </div>
+  </footer>
+  
+
+
+
+</main>
+ <!-- Popup Overlay -->
+<div id="popupOverlay" class="popup-overlay">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closePopup()">×</span>
+
+        <!-- Countdown Timer -->
+        <div class="timer">
+            <span id="minutes">07</span> : <span id="seconds">51</span>
+        </div>
+
+        <!-- Sale Heading -->
+        <h2>Huge SALE is On!</h2>
+        <p>Limited Time Offers on<br>Our Lubricants...<br>Hurry Up..!</p>
+
+        <!-- Sale Form -->
+        <form action="https://api.web3forms.com/submit" method="POST" onsubmit="return validateForm()">
+            <input type="hidden" name="access_key" value="3c980544-1eb9-4c02-9ddd-e0d98ed524dd">
+
+            <input type="text" name="first_name" placeholder="First Name*" required>
+            <input type="text" name="last_name" placeholder="Last Name (Optional)">
+
+            <div class="form-row">
+                <input type="tel" name="mobile" placeholder="Mobile Number*" required>
+                <input type="email" name="email" placeholder="Email ID*" required>
+            </div>
+
+            <div class="form-row">
+                <select name="country" required>
+                    <option value="" disabled selected>Country*</option>
+                    <option value="Oman">Oman</option>
+                    <option value="India">India</option>
+                    <option value="Saudi Arabia">Saudi Arabia</option>
+                    <option value="United Arab Emirates">UAE</option>
+                    <option value="Qatar">Qatar</option>
+                    <option value="Kuwait">Kuwait</option>
+                    <option value="Bahrain">Bahrain</option>
+                    <option value="Canada">Canada</option>
+                    <option value="United Kingdom">UK</option>
+                    <option value="USA">USA</option>
+                </select>
+            </div>
+
+            <select name="product" required>
+                <option value="" disabled selected>Select Product</option>
+                <option value="engine_oil">Engine Oil</option>
+                <option value="grease">Grease</option>
+                <option value="coolant">Coolant</option>
+                <option value="brake_fluid">Brake fluid</option>
+                <option value="turbine_oil">Turbine oil</option>
+                <option value="diesel_engine_oil">Diesel engine oil</option>
+                <option value="petrol_engine_oil">Petrol engine oil</option>
+                <option value="hydraulic_oil">Hydraulic oil</option>
+            </select>
+
+            <!-- Mailing List Checkbox -->
+            <div class="checkbox-container">
+                <input type="checkbox" name="subscribe" value="yes" required> 
+                <div class="checkbox-text">
+                    I agree to be added<br>to the mailing list
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit Now!</button>
+        </form>
+    </div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Check if the popup has already been shown in this session
+    if (!sessionStorage.getItem('popupShown')) {
+        // Show the popup and snowfall effect
+        setTimeout(function () {
+            showPopup();
+            createSnowflakes();
+        }, 5000); // 5 seconds delay
+
+        // Store a flag in sessionStorage so it doesn't show again in this session
+        sessionStorage.setItem('popupShown', 'true');
+    }
+});
+
+function showPopup() {
+    document.getElementById('popupOverlay').style.display = 'flex';
+    startCountdown();
+}
+
+function closePopup() {
+    document.getElementById('popupOverlay').style.display = 'none';
+}
+
+// Countdown timer function
+function startCountdown() {
+    let totalSeconds = 7 * 60 + 51;
+    const minutesElement = document.getElementById('minutes');
+    const secondsElement = document.getElementById('seconds');
+
+    if (!minutesElement || !secondsElement) {
+        console.error("Timer elements not found!");
+        return;
+    }
+
+    const countdownInterval = setInterval(function () {
+        if (totalSeconds <= 0) {
+            clearInterval(countdownInterval);
+            return;
+        }
+
+        totalSeconds--;
+
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+
+        minutesElement.textContent = minutes.toString().padStart(2, '0');
+        secondsElement.textContent = seconds.toString().padStart(2, '0');
+    }, 1000);
+}
+
+// Create snowfall effect
+function createSnowflakes() {
+    const overlay = document.getElementById('popupOverlay');
+
+    if (!overlay) {
+        console.error("Popup overlay not found!");
+        return;
+    }
+
+    for (let i = 0; i < 50; i++) {
+        const snowflake = document.createElement('div');
+        snowflake.classList.add('snow');
+
+        // Random positions and sizes
+        snowflake.style.left = Math.random() * 100 + 'vw';
+        snowflake.style.width = snowflake.style.height = Math.random() * 5 + 3 + 'px';
+
+        // Random animation duration and delay
+        snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+        snowflake.style.animationDelay = Math.random() * 2 + 's';
+
+        overlay.appendChild(snowflake);
+    }
+}
+
+</script>
+<script src="script.js"></script>
+
+</body>
+</html>

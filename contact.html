@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - SpanX</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/LOGO WITH FONT.png" alt="SpanX Logo">
+            </div>
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="review.html">Review</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleNav()">
+                <div class="cta"><a href="#">Customer Access</a></div>
+            </div>
+            <!-- Search Bar -->
+    <div class="search-container">
+        <!-- Search Icon -->
+        <div class="search-icon" onclick="toggleSearch()">
+            <i class="fas fa-search"></i>
+        </div>
+        <!-- Search Input -->
+        <input type="text" id="searchInput" placeholder="Search products..." oninput="showSuggestions()">
+        <!-- Suggestions Dropdown -->
+        <div id="suggestions" class="suggestions"></div>
+    </div>
+</div>
+ <script>
+       // Toggle search bar on mobile
+function toggleSearch() {
+    const searchInput = document.getElementById('searchInput');
+    searchInput.classList.toggle('active');
+    if (searchInput.classList.contains('active')) {
+        searchInput.focus();
+    }
+}
+
+// Sample product data
+const products = [
+    { name: "Diesel Engine Oil", link: "dieselengineoil.html" },
+    { name: "Petrol Engine Oil", link: "petroloil.html" },
+    { name: "Grease", link: "lithiumgrease.html" },
+    { name: "Coolant", link: "antifreeze.html" },
+    { name: "Brake Fluid", link: "brakefluid.html" },
+    { name: "Turbine Oil", link: "turbine.html" },
+    { name: "Hydraulic Oil", link: "hydraulicoil.html" }
+    
+   
+];
+
+function showSuggestions() {
+    const input = document.getElementById('searchInput').value.toLowerCase();
+    const suggestions = document.getElementById('suggestions');
+    suggestions.innerHTML = '';
+
+    if (input.length > 0) {
+        const filteredProducts = products.filter(product => 
+            product.name.toLowerCase().includes(input)
+        );
+
+        if (filteredProducts.length > 0) {
+            filteredProducts.forEach(product => {
+                const div = document.createElement('div');
+                div.textContent = product.name;
+                div.classList.add('suggestion-item'); // Add a class for easier identification
+                div.onclick = () => {
+                    window.location.href = product.link;
+                };
+                suggestions.appendChild(div);
+            });
+            suggestions.style.display = 'block';
+        } else {
+            suggestions.style.display = 'none';
+        }
+    } else {
+        suggestions.style.display = 'none';
+    }
+}
+
+// Close search bar and suggestions when clicking outside
+document.addEventListener('click', function(event) {
+    const suggestions = document.getElementById('suggestions');
+    const searchInput = document.getElementById('searchInput');
+    const searchIcon = document.querySelector('.search-icon'); // Get the search icon
+    const searchContainer = document.querySelector('.search-container');
+    
+    // Check if the click is on the search icon (to toggle)
+    if (searchIcon.contains(event.target)) {
+        return; // Let the toggleSearch function handle this
+    }
+    
+    // If search is active and click is outside search area, close it
+    if (searchInput.classList.contains('active') && 
+        !searchInput.contains(event.target) && 
+        !suggestions.contains(event.target) &&
+        !searchIcon.contains(event.target)) {
+        
+        searchInput.classList.remove('active'); // Close the search bar
+        suggestions.style.display = 'none'; // Hide suggestions
+    }
+});
+
+// Prevent clicks within the search container from closing it
+document.querySelector('.search-container').addEventListener('click', function(event) {
+    event.stopPropagation();
+});
+
+    </script>
+        </nav>
+    </header>
+    <div class="dark-contact-section">
+        <div class="contact-container">
+            <!-- Contact Info Column -->
+            <div class="contact-info-column">
+                <div class="section-header">
+                    <h2>Contact Information</h2>
+                    <div class="gold-divider"></div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Our Location</h3>
+                        <p>AL MISFA, PO.BOX-2114, PC-133<br>SULTANATE OF OMAN</p>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Call Us</h3>
+                        <p><a href="tel:+96878310160">+968 7831 0160</a></p>
+                        <p><a href="tel:+96899888388">+968 9988 8388</a></p>
+                        <p><a href="tel:+96876302027">+968 7630 2027</a></p>
+                        <p><a href="tel:+96894313997">+968 9431 3997</a></p>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Email Us</h3>
+                        <p><a href="mailto:spanxlubes@gmail.com">spanxlubes@gmail.com</a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Form Column -->
+            <div class="contact-form-column">
+                <div class="section-header">
+                    <h2>Send Us a Message</h2>
+                    <div class="gold-divider"></div>
+                </div>
+                
+                <form action="https://api.web3forms.com/submit" method="POST" class="dark-contact-form" onsubmit="return validateForm()">
+                    <input type="hidden" name="access_key" value="3c980544-1eb9-4c02-9ddd-e0d98ed524dd">
+                    
+                    <div class="form-group">
+                        <input type="text" name="name" id="name" required>
+                        <label for="name">Full Name</label>
+                        <span class="focus-border"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" name="email" id="email" required>
+                        <label for="email">Email Address</label>
+                        <span class="focus-border"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="tel" id="phone" name="phone" required>
+                        <label for="phone">Phone Number</label>
+                        <span class="focus-border"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea name="message" id="message" required></textarea>
+                        <label for="message">Your Message</label>
+                        <span class="focus-border"></span>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Map Column -->
+            <div class="map-column">
+                <div class="section-header">
+                    <h2>Our Location</h2>
+                    <div class="gold-divider"></div>
+                </div>
+                <div class="map-container">
+                    <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3659.1803253006447!2d58.2567234797344!3d23.490013524312264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e8e05cc6b3f4165%3A0xb331be254a332c6!2sFuture%20Tech%20Lubricants%20%26%20Spare%20Parts!5e0!3m2!1sen!2som!4v1745913490033!5m2!1sen!2som" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-container">
+          <div class="footer-grid">
+            <div class="footer-section quick-links">
+              <h3>Quick Links</h3>
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </div>
+      
+            <div class="footer-section address">
+              <h3>Address</h3>
+              <p>AL MISFA, PO.BOX-2114, PC-133<br>SULTANATE OF OMAN</p>
+            </div>
+      
+            <div class="footer-section contact-info">
+              <h3>Contact</h3>
+              <p><a href="tel:+96878310160">+968 7831 0160</a></p>
+              <p><a href="tel:+96899888388">+968 9988 8388</a></p>
+              <p><a href="tel:+96876302027">+968 7630 2027</a></p>
+              <p><a href="tel:+96894313997">+968 9431 3997</a></p>
+              <p>Email: <a href="mailto:spanxlubes@gmail.com">spanxlubes@gmail.com</a></p>
+            </div>
+      
+            <div class="footer-section follow-us">
+              <h3>Follow Us</h3>
+              <a href="https://www.instagram.com/spanxlubes?igsh=MTA3bzg3ZnJsc3VpeA==">Facebook</a><br>
+              <a href="https://www.instagram.com/spanxlubes?igsh=MTA3bzg3ZnJsc3VpeA==">Instagram</a>
+            </div>
+      
+            <div class="footer-section contact-us">
+              <h3>Contact Us</h3>
+              <form action="https://api.web3forms.com/submit" method="POST" onsubmit="return validateForm()">
+                <input type="hidden" name="access_key" value="3c980544-1eb9-4c02-9ddd-e0d98ed524dd">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="message" placeholder="Message" required></textarea>
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 Spanx. All rights reserved.</p>
+        </div>
+      </footer>
+      
+    
+    
+  
+  
+  </main>
+  
+  <script src="script.js"></script>
+  
+  </body>
+  </html>
+  

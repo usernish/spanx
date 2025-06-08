@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4TPRO - SpanX</title>
+    <link rel="stylesheet" href="4TPRO.CSS">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/LOGO WITH FONT.png" alt="SpanX Logo">
+            </div>
+
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="review.html">Review</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleNav()">
+                <div class="cta"><a href="#">Customer Access</a></div>
+            </div>
+            <!-- Search Bar -->
+    <div class="search-container">
+        <!-- Search Icon -->
+        <div class="search-icon" onclick="toggleSearch()">
+            <i class="fas fa-search"></i>
+        </div>
+        <!-- Search Input -->
+        <input type="text" id="searchInput" placeholder="Search products..." oninput="showSuggestions()">
+        <!-- Suggestions Dropdown -->
+        <div id="suggestions" class="suggestions"></div>
+    </div>
+</div>
+ <script>
+       // Toggle search bar on mobile
+function toggleSearch() {
+    const searchInput = document.getElementById('searchInput');
+    searchInput.classList.toggle('active');
+    if (searchInput.classList.contains('active')) {
+        searchInput.focus();
+    }
+}
+
+// Sample product data
+const products = [
+    { name: "Diesel Engine Oil", link: "dieselengineoil.html" },
+    { name: "Petrol Engine Oil", link: "petroloil.html" },
+    { name: "Grease", link: "lithiumgrease.html" },
+    { name: "Coolant", link: "antifreeze.html" },
+    { name: "Brake Fluid", link: "brakefluid.html" },
+    { name: "Turbine Oil", link: "turbine.html" },
+    { name: "Hydraulic Oil", link: "hydraulicoil.html" }
+    
+   
+];
+
+function showSuggestions() {
+    const input = document.getElementById('searchInput').value.toLowerCase();
+    const suggestions = document.getElementById('suggestions');
+    suggestions.innerHTML = '';
+
+    if (input.length > 0) {
+        const filteredProducts = products.filter(product => 
+            product.name.toLowerCase().includes(input)
+        );
+
+        if (filteredProducts.length > 0) {
+            filteredProducts.forEach(product => {
+                const div = document.createElement('div');
+                div.textContent = product.name;
+                div.classList.add('suggestion-item'); // Add a class for easier identification
+                div.onclick = () => {
+                    window.location.href = product.link;
+                };
+                suggestions.appendChild(div);
+            });
+            suggestions.style.display = 'block';
+        } else {
+            suggestions.style.display = 'none';
+        }
+    } else {
+        suggestions.style.display = 'none';
+    }
+}
+
+// Close search bar and suggestions when clicking outside
+document.addEventListener('click', function(event) {
+    const suggestions = document.getElementById('suggestions');
+    const searchInput = document.getElementById('searchInput');
+    const searchIcon = document.querySelector('.search-icon'); // Get the search icon
+    const searchContainer = document.querySelector('.search-container');
+    
+    // Check if the click is on the search icon (to toggle)
+    if (searchIcon.contains(event.target)) {
+        return; // Let the toggleSearch function handle this
+    }
+    
+    // If search is active and click is outside search area, close it
+    if (searchInput.classList.contains('active') && 
+        !searchInput.contains(event.target) && 
+        !suggestions.contains(event.target) &&
+        !searchIcon.contains(event.target)) {
+        
+        searchInput.classList.remove('active'); // Close the search bar
+        suggestions.style.display = 'none'; // Hide suggestions
+    }
+});
+
+// Prevent clicks within the search container from closing it
+document.querySelector('.search-container').addEventListener('click', function(event) {
+    event.stopPropagation();
+});
+
+    </script>
+        </nav>
+    </header>
+
+    <div class="fixed-contact">
+        <a href="tel:+968 7831 0160" class="phone-icon" target="_blank">
+            <img src="images/icons8-phone.gif" alt="Phone">
+        </a>
+        <a href="https://wa.me/+96878310160" class="whatsapp-icon" target="_blank">
+            <img src="images/icons8-whatsapp.gif" alt="WhatsApp">
+        </a>
+    </div>
+
+    <section class="product-details">
+        <h1 class="product-title">4 STROKE OIL</h1>
+        <div class="product-container">
+            <div class="product-image">
+                <div class="slider">
+                    <img src="images/4tpro.jpg" alt="Brake Fluid DOT-3">
+                  
+                </div>
+            </div>
+            <div class="product-info">
+                <h2>SPAN-X 4T Oil</h2>
+<table>
+    <tr><td><b>Brand</b></td><td>SPAN-X</td></tr>
+<tr><td><b>Model Name</b></td><td>4T</td></tr>
+<tr><td><b>Vehicle</b></td><td>Motorcycles, Scooters, ATVs</td></tr>
+<tr><td><b>Volume</b></td><td>1 Litre</td></tr>
+<tr><td><b>Series</b></td><td>4-Stroke Engine Oil</td></tr>
+<tr><td><b>Specification</b></td><td>Lubrication for 4-Stroke Engines</td></tr>
+<tr><td><b>Pack Size Available</b></td><td>1 Litre, 4 Litres</td></tr>
+
+</table>
+
+                <button class="enquiry-btn" onclick="document.getElementById('footer').scrollIntoView({behavior: 'smooth'});">Enquiry Now!</button>
+      <!-- Bottles Container -->
+      <div class="bottles-container">
+        <div class="bottle-item">
+            <div class="bottle-image">
+                <img src="images/4tpro.jpg" alt="250ML Bottle">
+            </div>
+            <p class="bottle-title">1 LITRE</p>
+        </div>
+        
+        
+    <!-- Preview Overlay -->
+    <div class="preview-overlay">
+        <div class="preview-content">
+            <button class="close-preview">&times;</button>
+            <img src="" alt="Preview Image">
+        </div>
+    </div>
+
+    <script>
+        // Get DOM elements
+        const bottleItems = document.querySelectorAll('.bottle-item');
+        const previewOverlay = document.querySelector('.preview-overlay');
+        const previewImage = previewOverlay.querySelector('img');
+        const closeButton = previewOverlay.querySelector('.close-preview');
+
+        // Add click handlers to bottles
+        bottleItems.forEach(bottle => {
+            bottle.addEventListener('click', () => {
+                const imgSrc = bottle.querySelector('img').src;
+                previewImage.src = imgSrc;
+                previewOverlay.classList.add('active');
+            });
+        });
+
+        // Close preview when clicking close button
+        closeButton.addEventListener('click', () => {
+            previewOverlay.classList.remove('active');
+        });
+
+        // Close preview when clicking outside the image
+        previewOverlay.addEventListener('click', (e) => {
+            if (e.target === previewOverlay) {
+                previewOverlay.classList.remove('active');
+            }
+        });
+
+        // Close preview with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && previewOverlay.classList.contains('active')) {
+                previewOverlay.classList.remove('active');
+            }
+        });
+    </script>
+    </section>
+
+  
+    <section class="product-description">
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('description')">Description</button>
+            <button class="tab-btn" onclick="showTab('performance')">Performance Features</button>
+            <button class="tab-btn" onclick="showTab('applications')">Applications</button>
+            <button class="tab-btn" onclick="showTab('standards')">Performance Standards</button>
+        </div>
+        <div class="tab-content" id="description">
+            <h3>SPAN-X 4T Oil</h3>
+            <p>SPAN-X 4T Oil is a premium four-stroke engine oil designed to deliver superior protection and performance for motorcycles and other 4-stroke engines. It ensures smooth engine operation, reduces wear and friction, and enhances fuel efficiency. The advanced formula helps maintain engine cleanliness and longevity.</p>
+        </div>
+        <div class="tab-content" id="performance" style="display: none;">
+            <h3>Performance Features</h3>
+            <p>- 1. Superior Engine Protection – Reduces wear and extends engine life.</p>
+            <p>- 2. Enhanced Thermal Stability – Performs well in high-temperature conditions.</p>
+            <p>- 3. Anti-Friction Formula – Minimizes friction for smooth gear shifting.</p>
+            <p>- 4. Advanced Detergency – Keeps the engine clean and prevents deposits.</p>
+            <p>- 5. Optimal Viscosity – Ensures proper lubrication across all engine speeds.</p>
+        </div>
+        <div class="tab-content" id="applications" style="display: none;">
+            <h3>Applications</h3>
+            <p>- Suitable for motorcycles, scooters, ATVs, and other 4-stroke engines.</p>
+            <p>- Recommended for air-cooled and liquid-cooled four-stroke engines.</p>
+            <p>- Ideal for high-performance and commuter motorcycles.</p>
+        </div>
+        <div class="tab-content" id="standards" style="display: none;">
+            <h3>Performance Standards</h3>
+            <p>- Meets and exceeds API SL and JASO MA2 specifications.</p>
+            <p>- Provides excellent protection for wet clutch systems.</p>
+            <p>- Recommended for engines requiring high-quality four-stroke oil.</p>
+        </div>
+    </section>
+    
+
+    <section class="brake-fluid">
+        <div class="content">
+            <h2>How to Use <span>Spanx 4T Engine Oil</span></h2>
+<ul>
+    <li>✅ Check compatibility with your vehicle and refer to the manufacturer’s guidelines.</li>
+    <li>✅ Park on a level surface and turn off the engine before changing the oil.</li>
+    <li>✅ Drain the old oil completely before refilling with SPAN-X 4T Oil.</li>
+    <li>✅ Use the recommended oil grade and quantity specified in your owner's manual.</li>
+    <li>✅ Securely close the oil filler cap to prevent leaks.</li>
+    <li>✅ Start the engine and let it run for a few minutes to circulate the oil properly.</li>
+    <li>✅ Regularly check and maintain the oil level for optimal performance.</li>
+</ul>
+
+            <a href="images/Spanx_4T_Engine_Oil_Usage.pdf" class="know-more">Download</a>
+        </div>
+        <div class="bg-image"></div>
+    </section>
+    
+    
+    <footer id="footer">
+        <div class="footer-container">
+          <div class="footer-grid">
+            <div class="footer-section quick-links">
+              <h3>Quick Links</h3>
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </div>
+      
+            <div class="footer-section address">
+              <h3>Address</h3>
+              <p>AL MISFA, PO.BOX-2114, PC-133<br>SULTANATE OF OMAN</p>
+            </div>
+      
+            <div class="footer-section contact-info">
+              <h3>Contact</h3>
+              <p><a href="tel:+96878310160">+968 7831 0160</a></p>
+              <p><a href="tel:+96899888388">+968 9988 8388</a></p>
+              <p><a href="tel:+96876302027">+968 7630 2027</a></p>
+              <p><a href="tel:+96894313997">+968 9431 3997</a></p>
+              <p>Email: <a href="mailto:spanxlubes@gmail.com">spanxlubes@gmail.com</a></p>
+            </div>
+      
+            <div class="footer-section follow-us">
+              <h3>Follow Us</h3>
+              <a href="https://www.instagram.com/spanxlubes?igsh=MTA3bzg3ZnJsc3VpeA==">Facebook</a><br>
+              <a href="https://www.instagram.com/spanxlubes?igsh=MTA3bzg3ZnJsc3VpeA==">Instagram</a>
+            </div>
+      
+            <div class="footer-section contact-us">
+              <h3>Contact Us</h3>
+              <form action="https://api.web3forms.com/submit" method="POST" onsubmit="return validateForm()">
+                <input type="hidden" name="access_key" value="3c980544-1eb9-4c02-9ddd-e0d98ed524dd">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="message" placeholder="Message" required></textarea>
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 Spanx. All rights reserved.</p>
+        </div>
+      </footer>
+      
+      
+    
+    
+    
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.style.display = 'none';
+            });
+            document.getElementById(tabId).style.display = 'block';
+            
+            document.querySelectorAll('.tab-btn').forEach(button => {
+                button.classList.remove('active');
+            });
+            document.querySelector(`[onclick="showTab('${tabId}')"]`).classList.add('active');
+        }
+    </script>
+    </main>
+    <script src="script.js"></script>
+    </body>
+    </html>
+    
+      

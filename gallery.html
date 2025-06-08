@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - SpanX</title>
+    <link rel="stylesheet" href="gallery.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/LOGO WITH FONT.png" alt="SpanX Logo">
+            </div>
+
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="review.html">Review</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleNav()">
+                <div class="cta"><a href="#">Customer Access</a></div>
+            </div>
+            <!-- Search Bar -->
+    <div class="search-container">
+        <!-- Search Icon -->
+        <div class="search-icon" onclick="toggleSearch()">
+            <i class="fas fa-search"></i>
+        </div>
+        <!-- Search Input -->
+        <input type="text" id="searchInput" placeholder="Search products..." oninput="showSuggestions()">
+        <!-- Suggestions Dropdown -->
+        <div id="suggestions" class="suggestions"></div>
+    </div>
+</div>
+ <script>
+       // Toggle search bar on mobile
+function toggleSearch() {
+    const searchInput = document.getElementById('searchInput');
+    searchInput.classList.toggle('active');
+    if (searchInput.classList.contains('active')) {
+        searchInput.focus();
+    }
+}
+
+// Sample product data
+const products = [
+    { name: "Diesel Engine Oil", link: "dieselengineoil.html" },
+    { name: "Petrol Engine Oil", link: "petroloil.html" },
+    { name: "Grease", link: "lithiumgrease.html" },
+    { name: "Coolant", link: "antifreeze.html" },
+    { name: "Brake Fluid", link: "brakefluid.html" },
+    { name: "Turbine Oil", link: "turbine.html" },
+    { name: "Hydraulic Oil", link: "hydraulicoil.html" }
+    
+   
+];
+
+function showSuggestions() {
+    const input = document.getElementById('searchInput').value.toLowerCase();
+    const suggestions = document.getElementById('suggestions');
+    suggestions.innerHTML = '';
+
+    if (input.length > 0) {
+        const filteredProducts = products.filter(product => 
+            product.name.toLowerCase().includes(input)
+        );
+
+        if (filteredProducts.length > 0) {
+            filteredProducts.forEach(product => {
+                const div = document.createElement('div');
+                div.textContent = product.name;
+                div.classList.add('suggestion-item'); // Add a class for easier identification
+                div.onclick = () => {
+                    window.location.href = product.link;
+                };
+                suggestions.appendChild(div);
+            });
+            suggestions.style.display = 'block';
+        } else {
+            suggestions.style.display = 'none';
+        }
+    } else {
+        suggestions.style.display = 'none';
+    }
+}
+
+// Close search bar and suggestions when clicking outside
+document.addEventListener('click', function(event) {
+    const suggestions = document.getElementById('suggestions');
+    const searchInput = document.getElementById('searchInput');
+    const searchIcon = document.querySelector('.search-icon'); // Get the search icon
+    const searchContainer = document.querySelector('.search-container');
+    
+    // Check if the click is on the search icon (to toggle)
+    if (searchIcon.contains(event.target)) {
+        return; // Let the toggleSearch function handle this
+    }
+    
+    // If search is active and click is outside search area, close it
+    if (searchInput.classList.contains('active') && 
+        !searchInput.contains(event.target) && 
+        !suggestions.contains(event.target) &&
+        !searchIcon.contains(event.target)) {
+        
+        searchInput.classList.remove('active'); // Close the search bar
+        suggestions.style.display = 'none'; // Hide suggestions
+    }
+});
+
+// Prevent clicks within the search container from closing it
+document.querySelector('.search-container').addEventListener('click', function(event) {
+    event.stopPropagation();
+});
+
+    </script>
+        </nav>
+    </header>
+
+    <div class="fixed-contact">
+        <a href="tel:+968 7831 0160" class="phone-icon" target="_blank">
+            <img src="images/icons8-phone.gif" alt="Phone">
+        </a>
+        <a href="https://wa.me/+96878310160" class="whatsapp-icon" target="_blank">
+            <img src="images/icons8-whatsapp.gif" alt="WhatsApp">
+        </a>
+    </div>
+    <!-- Banner Section -->
+<section class="gallery-banner">
+    <img src="images/muscatpro.png" alt="Gallery Banner">
+  </section>
+  
+   
+    
+        <section class="gallery">
+            <h1>Our Gallery</h1>
+            <div class="gallery-container">
+                <div class="gallery-item"><img src="images/gallery1.jpg" alt="Gallery Image 1"></div>
+                <div class="gallery-item"><img src="images/gallery2.jpg" alt="Gallery Image 2"></div>
+                <div class="gallery-item"><img src="images/gall3.jpg" alt="Gallery Image 3"></div>
+                <div class="gallery-item"><img src="images/gallery3.jpg" alt="Gallery Image 4"></div>
+                <div class="gallery-item"><img src="images/gallery5.jpg" alt="Gallery Image 5"></div>
+                <div class="gallery-item"><img src="images/gallery6.jpg" alt="Gallery Image 6"></div>
+                <div class="gallery-item"><img src="images/gallery7.jpg" alt="Gallery Image 7"></div>
+                <div class="gallery-item"><img src="images/gallery8.jpg" alt="Gallery Image 8"></div>
+                <div class="gallery-item"><img src="images/gallery9.jpg" alt="Gallery Image 9"></div>
+                <div class="gallery-item"><img src="images/gallery10.jpg" alt="Gallery Image 10"></div>
+                <div class="gallery-item"><img src="images/gallery11.jpg" alt="Gallery Image 11"></div>
+                <div class="gallery-item"><img src="images/gallery12.jpg" alt="Gallery Image 12"></div>
+                <div class="gallery-item"><img src="images/gallery13.jpg" alt="Gallery Image 13"></div>
+                <div class="gallery-item"><img src="images/gallery14.jpg" alt="Gallery Image 14"></div>
+                <div class="gallery-item"><img src="images/gallery15.jpg" alt="Gallery Image 15"></div>
+                <div class="gallery-item"><img src="images/gallery16.jpg" alt="Gallery Image 16"></div>
+                <div class="gallery-item"><img src="images/gallery17.jpg" alt="Gallery Image 17"></div>
+                <div class="gallery-item"><img src="images/gallery18.jpg" alt="Gallery Image 18"></div>
+                <div class="gallery-item"><img src="images/gallery19.png" alt="Gallery Image 19"></div>
+                <div class="gallery-item"><img src="images/gallery20.png" alt="Gallery Image 20"></div>
+                <div class="gallery-item"><img src="images/galle21.png" alt="Gallery Image 21"></div>
+                <div class="gallery-item"><img src="images/galle22.png" alt="Gallery Image 22"></div>
+                <div class="gallery-item"><img src="images/galle23.png" alt="Gallery Image 23"></div>
+                <div class="gallery-item"><img src="images/gallery15.jpg" alt="Gallery Image 24"></div>
+                
+            </div>
+    
+            <!-- Lightbox Overlay -->
+            <div class="lightbox-overlay">
+                <span class="close-btn">&times;</span>
+                <div class="lightbox-content">
+                    <img src="" alt="Lightbox Image">
+                    <button class="prev-btn">&larr;</button>
+                    <button class="next-btn">&rarr;</button>
+                </div>
+            </div>
+        </section>
+    
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const galleryItems = document.querySelectorAll('.gallery-item img');
+                const lightboxOverlay = document.querySelector('.lightbox-overlay');
+                const lightboxImg = document.querySelector('.lightbox-content img');
+                const closeBtn = document.querySelector('.close-btn');
+                const prevBtn = document.querySelector('.prev-btn');
+                const nextBtn = document.querySelector('.next-btn');
+    
+                let currentIndex = 0;
+    
+                // Open Lightbox
+                galleryItems.forEach((item, index) => {
+                    item.addEventListener('click', () => {
+                        currentIndex = index;
+                        updateLightboxImage();
+                        lightboxOverlay.classList.add('active');
+                    });
+                });
+    
+                // Close Lightbox
+                closeBtn.addEventListener('click', () => {
+                    lightboxOverlay.classList.remove('active');
+                });
+    
+                // Navigate to Previous Image
+                prevBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+                    updateLightboxImage();
+                });
+    
+                // Navigate to Next Image
+                nextBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex + 1) % galleryItems.length;
+                    updateLightboxImage();
+                });
+    
+                // Update Lightbox Image
+                function updateLightboxImage() {
+                    const imgSrc = galleryItems[currentIndex].src;
+                    lightboxImg.src = imgSrc;
+                }
+    
+                // Swipe Functionality for Mobile
+                let touchStartX = 0;
+                let touchEndX = 0;
+    
+                lightboxOverlay.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                });
+    
+                lightboxOverlay.addEventListener('touchend', (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                });
+    
+                function handleSwipe() {
+                    if (touchEndX < touchStartX) {
+                        // Swipe Left
+                        currentIndex = (currentIndex + 1) % galleryItems.length;
+                    } else if (touchEndX > touchStartX) {
+                        // Swipe Right
+                        currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+                    }
+                    updateLightboxImage();
+                }
+    
+                // Arrow Key Navigation for Desktop
+                document.addEventListener('keydown', (e) => {
+                    if (lightboxOverlay.classList.contains('active')) {
+                        if (e.key === 'ArrowLeft') {
+                            currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+                            updateLightboxImage();
+                        } else if (e.key === 'ArrowRight') {
+                            currentIndex = (currentIndex + 1) % galleryItems.length;
+                            updateLightboxImage();
+                        } else if (e.key === 'Escape') {
+                            lightboxOverlay.classList.remove('active');
+                        }
+                    }
+                });
+            });
+        </script>
+    </body>
+    </html>
+
+        
+    <footer>
+        <div class="footer-container">
+          <div class="footer-grid">
+            <div class="footer-section quick-links">
+              <h3>Quick Links</h3>
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </div>
+      
+            <div class="footer-section address">
+              <h3>Address</h3>
+              <p>AL MISFA, PO.BOX-2114, PC-133<br>SULTANATE OF OMAN</p>
+            </div>
+      
+            <div class="footer-section contact-info">
+              <h3>Contact</h3>
+              <p><a href="tel:+96878310160">+968 7831 0160</a></p>
+              <p><a href="tel:+96899888388">+968 9988 8388</a></p>
+              <p><a href="tel:+96876302027">+968 7630 2027</a></p>
+              <p><a href="tel:+96894313997">+968 9431 3997</a></p>
+              <p>Email: <a href="mailto:spanxlubes@gmail.com">spanxlubes@gmail.com</a></p>
+            </div>
+      
+            <div class="footer-section follow-us">
+              <h3>Follow Us</h3>
+              <a href="https://www.instagram.com/spanxlubes?igsh=MTA3bzg3ZnJsc3VpeA==">Facebook</a><br>
+              <a href="https://www.instagram.com/spanxlubes?igsh=MTA3bzg3ZnJsc3VpeA==">Instagram</a>
+            </div>
+      
+            <div class="footer-section contact-us">
+              <h3>Contact Us</h3>
+              <form action="https://api.web3forms.com/submit" method="POST" onsubmit="return validateForm()">
+                <input type="hidden" name="access_key" value="3c980544-1eb9-4c02-9ddd-e0d98ed524dd">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="message" placeholder="Message" required></textarea>
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 Spanx. All rights reserved.</p>
+        </div>
+      </footer>
+      
+    
+    
+      
+      
+      
+      </main>
+      
+      <script src="script.js"></script>
+      
+      </body>
+      </html>
+      

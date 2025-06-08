@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>marinelube - SpanX</title>
+    <link rel="stylesheet" href="marinelube.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/LOGO WITH FONT.png" alt="SpanX Logo">
+            </div>
+
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="review.html">Review</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleNav()">
+                <div class="cta"><a href="#">Customer Access</a></div>
+            </div>
+            <!-- Search Bar -->
+    <div class="search-container">
+        <!-- Search Icon -->
+        <div class="search-icon" onclick="toggleSearch()">
+            <i class="fas fa-search"></i>
+        </div>
+        <!-- Search Input -->
+        <input type="text" id="searchInput" placeholder="Search products..." oninput="showSuggestions()">
+        <!-- Suggestions Dropdown -->
+        <div id="suggestions" class="suggestions"></div>
+    </div>
+</div>
+ <script>
+       // Toggle search bar on mobile
+function toggleSearch() {
+    const searchInput = document.getElementById('searchInput');
+    searchInput.classList.toggle('active');
+    if (searchInput.classList.contains('active')) {
+        searchInput.focus();
+    }
+}
+
+// Sample product data
+const products = [
+    { name: "Diesel Engine Oil", link: "dieselengineoil.html" },
+    { name: "Petrol Engine Oil", link: "petroloil.html" },
+    { name: "Grease", link: "lithiumgrease.html" },
+    { name: "Coolant", link: "antifreeze.html" },
+    { name: "Brake Fluid", link: "brakefluid.html" },
+    { name: "Turbine Oil", link: "turbine.html" },
+    { name: "Hydraulic Oil", link: "hydraulicoil.html" }
+    
+   
+];
+
+function showSuggestions() {
+    const input = document.getElementById('searchInput').value.toLowerCase();
+    const suggestions = document.getElementById('suggestions');
+    suggestions.innerHTML = '';
+
+    if (input.length > 0) {
+        const filteredProducts = products.filter(product => 
+            product.name.toLowerCase().includes(input)
+        );
+
+        if (filteredProducts.length > 0) {
+            filteredProducts.forEach(product => {
+                const div = document.createElement('div');
+                div.textContent = product.name;
+                div.classList.add('suggestion-item'); // Add a class for easier identification
+                div.onclick = () => {
+                    window.location.href = product.link;
+                };
+                suggestions.appendChild(div);
+            });
+            suggestions.style.display = 'block';
+        } else {
+            suggestions.style.display = 'none';
+        }
+    } else {
+        suggestions.style.display = 'none';
+    }
+}
+
+// Close search bar and suggestions when clicking outside
+document.addEventListener('click', function(event) {
+    const suggestions = document.getElementById('suggestions');
+    const searchInput = document.getElementById('searchInput');
+    const searchIcon = document.querySelector('.search-icon'); // Get the search icon
+    const searchContainer = document.querySelector('.search-container');
+    
+    // Check if the click is on the search icon (to toggle)
+    if (searchIcon.contains(event.target)) {
+        return; // Let the toggleSearch function handle this
+    }
+    
+    // If search is active and click is outside search area, close it
+    if (searchInput.classList.contains('active') && 
+        !searchInput.contains(event.target) && 
+        !suggestions.contains(event.target) &&
+        !searchIcon.contains(event.target)) {
+        
+        searchInput.classList.remove('active'); // Close the search bar
+        suggestions.style.display = 'none'; // Hide suggestions
+    }
+});
+
+// Prevent clicks within the search container from closing it
+document.querySelector('.search-container').addEventListener('click', function(event) {
+    event.stopPropagation();
+});
+
+    </script>
+        </nav>
+    </header>
+
+    <div class="fixed-contact">
+        <a href="tel:+968 7831 0160" class="phone-icon" target="_blank">
+            <img src="images/icons8-phone.gif" alt="Phone">
+        </a>
+        <a href="https://wa.me/+96878310160" class="whatsapp-icon" target="_blank">
+            <img src="images/icons8-whatsapp.gif" alt="WhatsApp">
+        </a>
+    </div>
+
+    
+    <!-- About Us Heading with Background Image -->
+<section class="bg-heading">
+    <div class="heading-content">
+        <h1>Marine Lubricants</h1>
+        <p>"Power Your Gears, Drive with Confidence!"</p>
+        <P></P>
+    </div>
+</section>
+
+<section id="marine-section" class="marine-section">
+    <div class="container">
+        <h2>Marine Lubricants by SPAN-X FZE</h2>
+        <p>
+            At SPAN-X FZE, we are committed to providing premium-quality marine lubricants that ensure optimal engine performance, longevity, and reliability in the most demanding marine environments. Our carefully formulated lubricants are tailored to meet the unique needs of marine engines, offering superior protection against wear, corrosion, and deposits. With our extensive range of marine oils, we ensure that your vessels are always prepared for the toughest conditions at sea.
+        </p>
+        <div class="marine-image">
+            <img src="images/marineproo.jpg" alt="Marine Lubricants" />
+        </div>
+        <div class="marine-products">
+            <div class="product">
+                <h3>Marine Engine Oil (SAE 30 TBN 15)</h3>
+                <p>Our SAE 30 Marine Engine Oil with a TBN 15 is specifically designed for medium-speed marine engines operating under normal conditions. The TBN (Total Base Number) of 15 indicates a high alkaline reserve, helping to neutralize acids generated during combustion and prolonging the engine’s life. This oil provides exceptional wear protection, reduces friction, and enhances fuel efficiency. The SAE 30 grade ensures optimal performance in both high and low temperatures while maintaining the engine’s cleanliness by minimizing sludge formation.</p>
+                <ul>
+                    <li>TBN 15 for superior acid neutralization and protection.</li>
+                    <li>Excellent wear protection and reduced friction.</li>
+                    <li>High oxidation stability for longer oil life.</li>
+                    <li>Low volatility and excellent emulsifying properties.</li>
+                    <li>Ideal for medium-speed engines operating in various marine applications.</li>
+                </ul>
+            </div>
+            <div class="product">
+                <h3>System Engine Oil (SAE 40 TBN 20)</h3>
+                <p>The SAE 40 System Engine Oil with a TBN 20 is formulated for auxiliary engines in marine vessels, including generators and pumps. With a higher TBN of 20, this oil provides enhanced acid neutralization, ensuring longer oil change intervals and greater protection for engine components. Its excellent thermal stability, high load-carrying ability, and superior anti-wear properties ensure that your auxiliary systems operate efficiently in demanding conditions.</p>
+                <ul>
+                    <li>TBN 20 for excellent acid neutralization and extended engine life.</li>
+                    <li>Exceptional protection against wear and corrosion.</li>
+                    <li>Highly resistant to thermal degradation and oxidation.</li>
+                    <li>Ideal for marine auxiliary engines, ensuring smooth operation and reliability.</li>
+                </ul>
+            </div>
+            <div class="product">
+                <h3>Trunk Piston Engine Oil (SAE 50 TBN 70)</h3>
+                <p>Our SAE 50 Trunk Piston Engine Oil with an outstanding TBN 70 is specially designed for high-output, large marine engines with trunk piston systems. The high TBN level of 70 provides superior acid neutralization, making it ideal for engines operating in harsh conditions, such as low-quality fuels or engines experiencing high sulfur content. The oil also delivers excellent deposit control, ensuring that piston rings and other critical components remain clean and efficient, thus enhancing the engine’s performance and reliability.</p>
+                <ul>
+                    <li>TBN 70 for superior acid neutralization, particularly in high-sulfur fuel applications.</li>
+                    <li>Excellent deposit control to maintain engine cleanliness.</li>
+                    <li>Outstanding protection against corrosion and wear.</li>
+                    <li>Enhanced performance in large marine engines with trunk piston systems.</li>
+                    <li>Ideal for long-duration voyages and high-stress operations.</li>
+                </ul>
+            </div>
+            <div class="product">
+                <h3>Cylinder Oil (SAE 50 TBN 70)</h3>
+                <p>The SAE 50 Cylinder Oil with a TBN 70 is designed specifically for two-stroke marine engines. It offers excellent protection in the high-stress environment of the combustion chamber, where extreme pressures and temperatures prevail. The high TBN level ensures effective neutralization of acidic by-products formed during the combustion process, reducing wear and maintaining the integrity of engine parts. This helps in ensuring smooth operation and minimal downtime in high-output marine systems.</p>
+                <ul>
+                    <li>TBN 70 for optimal acid neutralization and protection against corrosion.</li>
+                    <li>Superior high-temperature stability and wear protection.</li>
+                    <li>High-performance lubrication under extreme pressures.</li>
+                    <li>Ideal for two-stroke marine engines, reducing the risk of engine failure.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+      
+<footer>
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-section quick-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+  
+        <div class="footer-section address">
+          <h3>Address</h3>
+          <p>AL MISFA, PO.BOX-2114, PC-133<br>SULTANATE OF OMAN</p>
+        </div>
+  
+        <div class="footer-section contact-info">
+          <h3>Contact</h3>
+          <p><a href="tel:+96878310160">+968 7831 0160</a></p>
+          <p><a href="tel:+96899888388">+968 9988 8388</a></p>
+          <p><a href="tel:+96876302027">+968 7630 2027</a></p>
+          <p><a href="tel:+96894313997">+968 9431 3997</a></p>
+          <p>Email: <a href="mailto:spanxlubes@gmail.com">spanxlubes@gmail.com</a></p>
+        </div>
+  
+        <div class="footer-section follow-us">
+          <h3>Follow Us</h3>
+          <a href="https://www.instagram.com/spanxlubes?igsh=MTA3bzg3ZnJsc3VpeA==">Facebook</a><br>
+          <a href="https://www.instagram.com/spanxlubes?igsh=MTA3bzg3ZnJsc3VpeA==">Instagram</a>
+        </div>
+  
+        <div class="footer-section contact-us">
+          <h3>Contact Us</h3>
+          <form action="https://api.web3forms.com/submit" method="POST" onsubmit="return validateForm()">
+            <input type="hidden" name="access_key" value="3c980544-1eb9-4c02-9ddd-e0d98ed524dd">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <textarea name="message" placeholder="Message" required></textarea>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Spanx. All rights reserved.</p>
+    </div>
+  </footer>
+  
+

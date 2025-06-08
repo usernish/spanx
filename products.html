@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - SpanX</title>
+    <link rel="stylesheet" href="pro.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/LOGO WITH FONT.png" alt="SpanX Logo">
+            </div>
+            <div class="hamburger" onclick="toggleNav()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="products.html" class="active">Products</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="review.html">Review</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <!-- Search Bar -->
+    <div class="search-container">
+        <!-- Search Icon -->
+        <div class="search-icon" onclick="toggleSearch()">
+            <i class="fas fa-search"></i>
+        </div>
+        <!-- Search Input -->
+        <input type="text" id="searchInput" placeholder="Search products..." oninput="showSuggestions()">
+        <!-- Suggestions Dropdown -->
+        <div id="suggestions" class="suggestions"></div>
+    </div>
+</div>
+ <script>
+       // Toggle search bar on mobile
+function toggleSearch() {
+    const searchInput = document.getElementById('searchInput');
+    searchInput.classList.toggle('active');
+    if (searchInput.classList.contains('active')) {
+        searchInput.focus();
+    }
+}
+
+// Sample product data
+const products = [
+    { name: "Diesel Engine Oil", link: "dieselengineoil.html" },
+    { name: "Petrol Engine Oil", link: "petroloil.html" },
+    { name: "Grease", link: "lithiumgrease.html" },
+    { name: "Coolant", link: "antifreeze.html" },
+    { name: "Brake Fluid", link: "brakefluid.html" },
+    { name: "Turbine Oil", link: "turbine.html" },
+    { name: "Hydraulic Oil", link: "hydraulicoil.html" }
+    
+   
+];
+
+function showSuggestions() {
+    const input = document.getElementById('searchInput').value.toLowerCase();
+    const suggestions = document.getElementById('suggestions');
+    suggestions.innerHTML = '';
+
+    if (input.length > 0) {
+        const filteredProducts = products.filter(product => 
+            product.name.toLowerCase().includes(input)
+        );
+
+        if (filteredProducts.length > 0) {
+            filteredProducts.forEach(product => {
+                const div = document.createElement('div');
+                div.textContent = product.name;
+                div.classList.add('suggestion-item'); // Add a class for easier identification
+                div.onclick = () => {
+                    window.location.href = product.link;
+                };
+                suggestions.appendChild(div);
+            });
+            suggestions.style.display = 'block';
+        } else {
+            suggestions.style.display = 'none';
+        }
+    } else {
+        suggestions.style.display = 'none';
+    }
+}
+
+// Close search bar and suggestions when clicking outside
+document.addEventListener('click', function(event) {
+    const suggestions = document.getElementById('suggestions');
+    const searchInput = document.getElementById('searchInput');
+    const searchIcon = document.querySelector('.search-icon'); // Get the search icon
+    const searchContainer = document.querySelector('.search-container');
+    
+    // Check if the click is on the search icon (to toggle)
+    if (searchIcon.contains(event.target)) {
+        return; // Let the toggleSearch function handle this
+    }
+    
+    // If search is active and click is outside search area, close it
+    if (searchInput.classList.contains('active') && 
+        !searchInput.contains(event.target) && 
+        !suggestions.contains(event.target) &&
+        !searchIcon.contains(event.target)) {
+        
+        searchInput.classList.remove('active'); // Close the search bar
+        suggestions.style.display = 'none'; // Hide suggestions
+    }
+});
+
+// Prevent clicks within the search container from closing it
+document.querySelector('.search-container').addEventListener('click', function(event) {
+    event.stopPropagation();
+});
+
+    </script>
+           
+        </nav>
+    </header>
+
+    <div class="fixed-contact">
+        <a href="tel:+968 7831 0160" class="phone-icon" target="_blank">
+            <img src="images/icons8-phone.gif" alt="Phone">
+        </a>
+        <a href="https://wa.me/+96878310160" class="whatsapp-icon" target="_blank">
+            <img src="images/icons8-whatsapp.gif" alt="WhatsApp">
+        </a>
+    </div>
+    
+
+    
+    <!-- About Us Heading with Background Image -->
+<section class="about-heading">
+    <div class="heading-content">
+        <h1>explore</h1>
+        <p>"Superior Performance, Ultimate Protection – Explore Our Products!".</p>
+    </div>
+</section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <h2>Our Products</h2>
+        <div class="product-container">
+            <!-- Product 1: Gear Oil -->
+            <div class="product-box">
+                <img src="images/gear2.jpg" alt="Gear Oil">
+                <h3>Gear Oil</h3>
+                <p>High-performance gear oil designed for smooth operation and extended equipment life.</p>
+                <a href="gearoil.html" class="know-more-btn">Know More</a>
+            </div>
+
+             <!-- Product 2: Antifreeze Coolant -->
+             <div class="product-box">
+                <img src="images/antifree.jpg" alt="Antifreeze Coolant">
+                <h3>Antifreeze Coolant</h3>
+                <p>Protects engines from freezing and overheating in extreme temperatures.</p>
+                <a href="antifreeze.html" class="know-more-btn">Know More</a>
+            </div>
+
+             <!-- Product 3: Diesel Engine Oil -->
+             <div class="product-box">
+                <img src="images/dieselenginebg.jpeg" alt="Diesel Engine Oil">
+                <h3>Diesel Engine Oil</h3>
+                <p>Specially formulated for diesel engines to ensure maximum performance.</p>
+                <a href="dieselengineoil.html" class="know-more-btn">Know More</a>
+            </div>
+
+          
+             <!-- Product 4: petrol engine Oil -->
+             <div class="product-box">
+                <img src="images/petroleng.jpg" alt="Gear Oil">
+                <h3>Petrol Engine Oil</h3>
+                <p>High-performance Petrol engine oil designed for smooth running and extended equipment life.</p>
+                <a href="petroloil.html" class="know-more-btn">Know More</a>
+            </div>
+
+            <!-- Product 5: Hydraulic Oil -->
+            <div class="product-box">
+                <img src="images/Hydraulicbg.webp" alt="Hydraulic Oil">
+                <h3>Hydraulic Oil</h3>
+                <p>Provides excellent lubrication and protection for hydraulic systems.</p>
+                <a href="hydraulicoil.html" class="know-more-btn">Know More</a>
+            </div>
+
+             <!-- Product 6: Brake Fluid -->
+             <div class="product-box">
+                <img src="images/brakebgmain.jpg" alt="Brake Fluid">
+                <h3>Brake Fluid</h3>
+                <p>Ensures reliable braking performance and safety.</p>
+                <a href="brakefluid.html" class="know-more-btn">Know More</a>
+            </div>
+
+            <!-- Product 7: 2t 4t oil -->
+            <div class="product-box">
+                <img src="images/2t4tbg.jpg" alt="Gear Oil">
+                <h3>2T Oil & 4t Oil</h3>
+                <p>Premium lubrication for stroke engine performance and longevity.</p>
+                <a href="2t.html" class="know-more-btn">Know More</a>
+            </div>
+
+             <!-- Product 8: Automatic Transmission Oil -->
+             <div class="product-box">
+                <img src="images/autotran.jpg" alt="Automatic Transmission Oil">
+                <h3>Automatic Transmission Oil</h3>
+                <p>Ensures optimal performance and longevity of automatic transmissions.</p>
+                <a href="transmissionoil.html" class="know-more-btn">Know More</a>
+            </div>
+            
+            
+            <!-- Product 9: Lithium Grease -->
+            <div class="product-box">
+                <img src="images/lithiumapp.jpeg" alt="Lithium Grease">
+                <h3>Lithium Grease</h3>
+                <p>High-quality grease for lubrication and protection of mechanical components.</p>
+                <a href="lithiumgrease.html" class="know-more-btn">Know More</a>
+            </div>
+            
+            
+            <!-- Product 10: Calcium Greases -->
+            <div class="product-box">
+                <img src="images/calciumbg.jpg" alt="Calcium Greases">
+                <h3>Calcium Greases</h3>
+                <p>Ideal for heavy-duty applications and extreme conditions.</p>
+                <a href="calciumgrease.html" class="know-more-btn">Know More</a>
+            </div>
+
+            
+            
+            <!-- Product 11: Turbine Oil -->
+             <div class="product-box">
+                <img src="images/turbineoilbg.jpg" alt="Gear Oil">
+                <h3>Turbine Oil</h3>
+                <p>Powering efficiency, protecting performance – Turbine Oil for unstoppable energy.</p>
+                <a href="turbine.html" class="know-more-btn">Know More</a>
+            </div>
+
+            <!-- Product 12: Compressor Oil -->
+            <div class="product-box">
+                <img src="images/compressorbg.jpg" alt="Gear Oil">
+                <h3>Compressor Oil</h3>
+                <p>Reliable lubrication for smooth and efficient compressor performance.</p>
+                <a href="compressor.html" class="know-more-btn">Know More</a>
+            </div>
+
+            <!-- Product 13: soluble cutting -->
+            <div class="product-box">
+                <img src="images/soluble-cutting-oil.jpg" alt="Gear Oil">
+                <h3>Soluble Cutting Oil</h3>
+                <p>General Purpose Water Extendable Cutting Fluid.</p>
+                <a href="soluble.html" class="know-more-btn">Know More</a>
+            </div>
+
+            <!-- Product 14: marine oil -->
+            <div class="product-box">
+                <img src="images/marineproo.jpg" alt="Gear Oil">
+                <h3>Marine Oil</h3>
+                <p>Powering marine engines with superior protection and performance.</p>
+                <a href="marine.html" class="know-more-btn">Know More</a>
+            </div>
+
+           
+
+             <!-- Product 15: marine lubricant  -->
+             <div class="product-box">
+                <img src="images/marinelubes.jpeg" alt="Gear Oil">
+                <h3>Marine Lubricant</h3>
+                <p>Premium lubrication for Marine engine performance and longevity.</p>
+                <a href="marinelube.html" class="know-more-btn">Know More</a>
+            </div>
+
+             <!-- Product 16: Base oil -->
+             <div class="product-box">
+                <img src="images/baseoil.jpg" alt="Gear Oil">
+                <h3>Base Oils</h3>
+                <p>Premium OIL for optimal engine performance and longevity.</p>
+                <a href="baseoil.html" class="know-more-btn">Know More</a>
+            </div>
+
+             <!-- Product 17: polimer -->
+             <div class="product-box">
+                <img src="images/polimers.jpg" alt="Gear Oil">
+                <h3>Polymers</h3>
+                <p>"Enhancing material strength and flexibility with advanced polymer solutions"</p>
+                <a href="polimers.html" class="know-more-btn">Know More</a>
+            </div>
+
+             <!-- Product 18: polimer -->
+             <div class="product-box">
+                <img src="images/aautomotive.jpg" alt="Gear Oil">
+                <h3>Automotive Lubricant</h3>
+                <p>"Provides excellent lubrication and protection for motors"</p>
+                <a href="automotive.html" class="know-more-btn">Know More</a>
+            </div>
+
+             <!-- Product 19: polimer -->
+             <div class="product-box">
+                <img src="images/additivess.jpeg" alt="Gear Oil">
+                <h3>Additive Packages</h3>
+                <p>"Enhancing efficiency and durability with advanced additive solutions"</p>
+                <a href="additive.html" class="know-more-btn">Know More</a>
+            </div>
+
+            <!-- Product 20: polimer -->
+            <div class="product-box">
+                <img src="images/organic.jpg" alt="Gear Oil">
+                <h3>Organic Chemicals</h3>
+                <p>""Quality organic chemicals for various applications.""</p>
+                <a href="organic.html" class="know-more-btn">Know More</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="product-section">
+        <div class="product-card">
+            <h3>Gasoline Engine Oil</h3>
+            <ul>
+                <li>Fully Synthetic & Semi Synthetic Gasoline Engine Oil</li>
+                <li>SAE 0W20 API SN/SM/SL</li>
+                <li>SAE 0W30 API SN/SM/SL</li>
+                <li>SAE 5W20 API SN/SM/SL</li>
+                <li>SAE 5W30 API SN/SM/SL</li>
+                <li>SAE 5W40 API SN/SM/SL</li>
+                <li>SAE 10W30 API SN/SM/SL/SF</li>
+                <li>SAE 10W40 API SN/SM/SL</li>
+                <li>SAE 15W40 API SN/SM/SL</li>
+                <li>SAE 20W50 API SN/SM/SL</li>
+                <li>SAE 40 API SN/SM/SL</li>
+                <li>SAE 30 API SN/SM/SL</li>
+            </ul>
+        </div>
+    
+        <div class="product-card">
+            <h3>Diesel Engine Oil</h3>
+            <ul>
+                <li>Fully Synthetic & Semi Synthetic Diesel Engine Oils</li>
+                <li>SAE 0W20 API C3/C4/CH4</li>
+                <li>SAE 0W30 API C3/C4/CH4</li>
+                <li>SAE 5W20 API C3/C4/CH4</li>
+                <li>SAE 5W30 API C3/C4/CH4</li>
+                <li>SAE 5W40 API C3/C4/CH4</li>
+                <li>SAE 10W30 API C3/C4/CH4</li>
+                <li>SAE 10W40 API C3/C4/CH4</li>
+                <li>SAE 15W40 API C3/C4/CH4</li>
+                <li>SAE 20W50 API C3/C4/CH4</li>
+                <li>SAE 50 API C3/C4/CH4</li>
+            </ul>
+        </div>
+    
+        <div class="product-card">
+            <h3>Hydraulic & Gear Oil</h3>
+            <ul>
+                <li>Hydraulic Oil ISO 32</li>
+                <li>Hydraulic Oil ISO 46</li>
+                <li>Hydraulic Oil ISO 68</li>
+                <li>Hydraulic Oil ISO 100</li>
+                <li>Gear Oil SAE 90 API GL-4 & GL-5</li>
+                <li>Gear Oil SAE 140 API GL-4 & GL-5</li>
+                <li>Gear Oil 80W90 API GL-5</li>
+                <li>Gear Oil 85W140 API GL-5</li>
+            </ul>
+        </div>
+    
+        <div class="product-card">
+            <h3>ATF & Clutch Fluid</h3>
+            <ul>
+                <li>ATF Type A</li>
+                <li>ATF Dexron II</li>
+                <li>ATF Dexron III</li>
+                <li>ATF Dexron 6</li>
+            </ul>
+        </div>
+    
+        <div class="product-card">
+            <h3>Grease</h3>
+            <ul>
+                <li>Lithium Extreme Pressure Grease EP2</li>
+                <li>Calcium Multipurpose Grease MP3</li>
+                <li>Lithium Multipurpose Grease MP2</li>
+                <li>Lithium Multipurpose Grease MP3</li>
+                <li>High Temperature Grease</li>
+            </ul>
+        </div>
+    
+        <div class="product-card">
+            <h3>Brake Fluid</h3>
+            <ul>
+                <li>Brake Fluid DOT 3</li>
+                <li>Brake Fluid DOT 4</li>
+            </ul>
+        </div>
+    
+        <div class="product-card">
+            <h3>Coolant & AntiFreeze</h3>
+            <ul>
+                <li>Anti Freeze 100%</li>
+                <li>Anti Freeze 50%</li>
+            </ul>
+        </div>
+    
+        <div class="product-card">
+            <h3>Industrial Oils</h3>
+            <ul>
+                <li>Refrigeration Oil</li>
+                <li>Compressor Oil</li>
+                <li>Transformer Oil</li>
+                <li>Heat Transfer Fluid</li>
+                <li>Cutting Oil</li>
+                <li>Cold Rolling Oil</li>
+                <li>Quenching Oil</li>
+            </ul>
+        </div>
+    
+        <div class="product-card">
+            <h3>Lubricant Additives</h3>
+            <ul>
+                <li>Diesel Engine Oil Additive Package - CH4/CF4</li>
+                <li>Gasoline Engine Oil Additive Package - SF/SL/SM/SN</li>
+                <li>Viscosity Index Improver</li>
+                <li>Viscosity Index Improver Polymer for Monograde Oil</li>
+            </ul>
+        </div>
+    
+        <div class="product-card">
+            <h3>Additives Packages</h3>
+            <ul>
+                <li>Oil Additive Packages</li>
+                <li>Viscosity Index Improver</li>
+                <li>PCMO API SN core additive package For gasoline oil Car including the latest API, ACEA, JAMA and OEM specifications.</li>
+                <li>HDEO Additives Package, including latest API, ACEA, JAMA and OEM specifications.</li>
+                <li>Low Tier Package – we can offer a very cost-effective packages.</li>
+                <li>Dex III ATF.</li>
+            </ul>
+        </div>
+    
+        <div class="product-card">
+            <h3>Organic Chemicals</h3>
+            <ul>
+                <li>Acetic Acid</li>
+                <li>Glycerine</li>
+                <li>Glycols – MEG, DEG, TEG, MPG</li>
+                <li>Vinyl Acetate Monomer</li>
+                <li>Synthetic Carboxylic Acids</li>
+            </ul>
+        </div>
+    
+        <div class="product-card">
+            <h3>Polymers</h3>
+            <ul>
+                <li>ABS</li>
+                <li>Polyethylene: LDPE, LLDPE, HDPE</li>
+                <li>Polyethylene Terephthalate (PET) bottles grade</li>
+                <li>Polypropylene: Homo- & Co-polymers</li>
+                <li>Polystyrene: GP, High Impact, E-PS</li>
+                <li>PVC</li>
+                <li>EPS Insulated Cups</li>
+            </ul>
+        </div>
+    </div>
+    
+
+
+
+    
+
+    <footer>
+        <div class="footer-container">
+          <div class="footer-grid">
+            <div class="footer-section quick-links">
+              <h3>Quick Links</h3>
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </div>
+      
+            <div class="footer-section address">
+              <h3>Address</h3>
+              <p>AL MISFA, PO.BOX-2114, PC-133<br>SULTANATE OF OMAN</p>
+            </div>
+      
+            <div class="footer-section contact-info">
+              <h3>Contact</h3>
+              <p><a href="tel:+96878310160">+968 7831 0160</a></p>
+              <p><a href="tel:+96899888388">+968 9988 8388</a></p>
+              <p><a href="tel:+96876302027">+968 7630 2027</a></p>
+              <p><a href="tel:+96894313997">+968 9431 3997</a></p>
+              <p>Email: <a href="mailto:spanxlubes@gmail.com">spanxlubes@gmail.com</a></p>
+            </div>
+      
+            <div class="footer-section follow-us">
+              <h3>Follow Us</h3>
+              <a href="https://www.instagram.com/spanxlubes?igsh=MTA3bzg3ZnJsc3VpeA==">Facebook</a><br>
+              <a href="https://www.instagram.com/spanxlubes?igsh=MTA3bzg3ZnJsc3VpeA==">Instagram</a>
+            </div>
+      
+            <div class="footer-section contact-us">
+              <h3>Contact Us</h3>
+              <form action="https://api.web3forms.com/submit" method="POST" onsubmit="return validateForm()">
+                <input type="hidden" name="access_key" value="3c980544-1eb9-4c02-9ddd-e0d98ed524dd">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="message" placeholder="Message" required></textarea>
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 Spanx. All rights reserved.</p>
+        </div>
+      </footer>
+      
+    
+    
+      
+      
+      </main>
+      
+      <script src="script.js"></script>
+      
+      </body>
+      </html>
+      

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews - SpanX</title>
+    <link rel="stylesheet" href="rev.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/LOGO WITH FONT.png" alt="SpanX Logo">
+            </div>
+            <div class="hamburger" onclick="toggleNav()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="review.html" class="active">Review</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <!-- Search Bar -->
+    <div class="search-container">
+        <!-- Search Icon -->
+        <div class="search-icon" onclick="toggleSearch()">
+            <i class="fas fa-search"></i>
+        </div>
+        <!-- Search Input -->
+        <input type="text" id="searchInput" placeholder="Search products..." oninput="showSuggestions()">
+        <!-- Suggestions Dropdown -->
+        <div id="suggestions" class="suggestions"></div>
+    </div>
+</div>
+ <script>
+       // Toggle search bar on mobile
+function toggleSearch() {
+    const searchInput = document.getElementById('searchInput');
+    searchInput.classList.toggle('active');
+    if (searchInput.classList.contains('active')) {
+        searchInput.focus();
+    }
+}
+
+// Sample product data
+const products = [
+    { name: "Diesel Engine Oil", link: "dieselengineoil.html" },
+    { name: "Petrol Engine Oil", link: "petroloil.html" },
+    { name: "Grease", link: "lithiumgrease.html" },
+    { name: "Coolant", link: "antifreeze.html" },
+    { name: "Brake Fluid", link: "brakefluid.html" },
+    { name: "Turbine Oil", link: "turbine.html" },
+    { name: "Hydraulic Oil", link: "hydraulicoil.html" }
+    
+   
+];
+
+function showSuggestions() {
+    const input = document.getElementById('searchInput').value.toLowerCase();
+    const suggestions = document.getElementById('suggestions');
+    suggestions.innerHTML = '';
+
+    if (input.length > 0) {
+        const filteredProducts = products.filter(product => 
+            product.name.toLowerCase().includes(input)
+        );
+
+        if (filteredProducts.length > 0) {
+            filteredProducts.forEach(product => {
+                const div = document.createElement('div');
+                div.textContent = product.name;
+                div.classList.add('suggestion-item'); // Add a class for easier identification
+                div.onclick = () => {
+                    window.location.href = product.link;
+                };
+                suggestions.appendChild(div);
+            });
+            suggestions.style.display = 'block';
+        } else {
+            suggestions.style.display = 'none';
+        }
+    } else {
+        suggestions.style.display = 'none';
+    }
+}
+
+// Close search bar and suggestions when clicking outside
+document.addEventListener('click', function(event) {
+    const suggestions = document.getElementById('suggestions');
+    const searchInput = document.getElementById('searchInput');
+    const searchIcon = document.querySelector('.search-icon'); // Get the search icon
+    const searchContainer = document.querySelector('.search-container');
+    
+    // Check if the click is on the search icon (to toggle)
+    if (searchIcon.contains(event.target)) {
+        return; // Let the toggleSearch function handle this
+    }
+    
+    // If search is active and click is outside search area, close it
+    if (searchInput.classList.contains('active') && 
+        !searchInput.contains(event.target) && 
+        !suggestions.contains(event.target) &&
+        !searchIcon.contains(event.target)) {
+        
+        searchInput.classList.remove('active'); // Close the search bar
+        suggestions.style.display = 'none'; // Hide suggestions
+    }
+});
+
+// Prevent clicks within the search container from closing it
+document.querySelector('.search-container').addEventListener('click', function(event) {
+    event.stopPropagation();
+});
+
+    </script>
+        </nav>
+    </header>
+
+    <div class="fixed-contact">
+        <a href="tel:+968 7831 0160" class="phone-icon" target="_blank">
+            <img src="images/icons8-phone.gif" alt="Phone">
+        </a>
+        <a href="https://wa.me/+96878310160" class="whatsapp-icon" target="_blank">
+            <img src="images/icons8-whatsapp.gif" alt="WhatsApp">
+        </a>
+    </div>
+    
+
+    
+    <!-- review Heading with Background Image -->
+<section class="review-heading">
+    <div class="heading-content">
+        <h1>Our Family</h1>
+        <p>Our customers are the heart of our journey, and their trust inspires us every day.</p>
+    </div>
+</section>
+
+
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+        <div class="container">
+            <h2>What Our Customers Say</h2>
+            <div class="reviews-container">
+                <!-- Existing Reviews -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="images/misfathlogo.png" alt="User 1">
+                        <h3>Al misfat modern work shop 
+                        </h3>
+                        
+                    </div>
+                    <p>"SpanX has been a game-changer for our business. Their products are top-notch, and their customer service is exceptional!"</p>
+                    <div class="rating">★★★★★</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="images/hydrotech.jpg" alt="User 2">
+                        <h3>Hydrotech international
+                        </h3>
+                        
+                    </div>
+                    <p>"We've been using SpanX products for years, and they never disappoint. Highly recommended!"</p>
+                    <div class="rating">★★★★☆</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="images/heavy.jpg" alt="User 3">
+                        <h3>Heavy technical trading</h3>
+                       
+                    </div>
+                    <p>"The quality and durability of SpanX products are unmatched. Great value for money!"</p>
+                    <div class="rating">★★★★★</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="images/fajar.jpg" alt="User 4">
+                        <h3> Al fajer al arabiya</h3>
+                        
+                    </div>
+                    <p>"SpanX has helped us streamline our operations with their reliable products. Thank you!"</p>
+                    <div class="rating">★★★★☆</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="images/gul.jpg" alt="User 5">
+                        <h3>Gulmar construction and trade</h3>
+                        
+                    </div>
+                    <p>"Excellent service and high-quality products. SpanX is our go-to supplier!"</p>
+                    <div class="rating">★★★★★</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="images/alnas.jpg" alt="User 6">
+                        <h3>Al nasar technical </h3>
+                       
+                    </div>
+                    <p>"We are extremely satisfied with SpanX. Their products are reliable and efficient."</p>
+                    <div class="rating">★★★★☆</div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- Write Review Section -->
+    <section class="write-review-section">
+        <div class="container">
+            <h2>Write a Review</h2>
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <!-- Web3Forms Access Key -->
+                <input type="hidden" name="access_key" value="3c980544-1eb9-4c02-9ddd-e0d98ed524dd">
+    
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+    
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+    
+                <div class="form-group">
+                    <label for="role">Your Role/Company</label>
+                    <input type="text" id="role" name="role" required>
+                </div>
+    
+                <div class="form-group">
+                    <label for="rating">Rating</label>
+                    <select id="rating" name="rating" required>
+                        <option value="5">★★★★★</option>
+                        <option value="4">★★★★☆</option>
+                        <option value="3">★★★☆☆</option>
+                        <option value="2">★★☆☆☆</option>
+                        <option value="1">★☆☆☆☆</option>
+                    </select>
+                </div>
+    
+                <div class="form-group">
+                    <label for="review">Your Review</label>
+                    <textarea id="review" name="review" rows="5" required></textarea>
+                </div>
+    
+               
+    
+                <button type="submit">Submit Review</button>
+            </form>
+        </div>
+    </section>
+    
+  
+  
+   
+    <footer>
+        <div class="footer-container">
+          <div class="footer-grid">
+            <div class="footer-section quick-links">
+              <h3>Quick Links</h3>
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </div>
+      
+            <div class="footer-section address">
+              <h3>Address</h3>
+              <p>AL MISFA, PO.BOX-2114, PC-133<br>SULTANATE OF OMAN</p>
+            </div>
+      
+            <div class="footer-section contact-info">
+              <h3>Contact</h3>
+              <p><a href="tel:+96878310160">+968 7831 0160</a></p>
+              <p><a href="tel:+96899888388">+968 9988 8388</a></p>
+              <p><a href="tel:+96876302027">+968 7630 2027</a></p>
+              <p><a href="tel:+96894313997">+968 9431 3997</a></p>
+              <p>Email: <a href="mailto:spanxlubes@gmail.com">spanxlubes@gmail.com</a></p>
+            </div>
+      
+            <div class="footer-section follow-us">
+              <h3>Follow Us</h3>
+              <a href="https://www.instagram.com/spanxlubes?igsh=MTA3bzg3ZnJsc3VpeA==">Facebook</a><br>
+              <a href="https://www.instagram.com/spanxlubes?igsh=MTA3bzg3ZnJsc3VpeA==">Instagram</a>
+            </div>
+      
+            <div class="footer-section contact-us">
+              <h3>Contact Us</h3>
+              <form action="https://api.web3forms.com/submit" method="POST" onsubmit="return validateForm()">
+                <input type="hidden" name="access_key" value="3c980544-1eb9-4c02-9ddd-e0d98ed524dd">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="message" placeholder="Message" required></textarea>
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 Spanx. All rights reserved.</p>
+        </div>
+      </footer>
+      
+    
+    
+      
+      
+      
+      </main>
+      
+      <script src="script.js"></script>
+      
+      </body>
+      </html>
+      

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRANSMISSION - SpanX</title>
+    <link rel="stylesheet" href="transmissionoilfull.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/LOGO WITH FONT.png" alt="SpanX Logo">
+            </div>
+
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="review.html">Review</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleNav()">
+                <div class="cta"><a href="#">Customer Access</a></div>
+            </div>
+            <!-- Search Bar -->
+    <div class="search-container">
+        <!-- Search Icon -->
+        <div class="search-icon" onclick="toggleSearch()">
+            <i class="fas fa-search"></i>
+        </div>
+        <!-- Search Input -->
+        <input type="text" id="searchInput" placeholder="Search products..." oninput="showSuggestions()">
+        <!-- Suggestions Dropdown -->
+        <div id="suggestions" class="suggestions"></div>
+    </div>
+</div>
+ <script>
+       // Toggle search bar on mobile
+function toggleSearch() {
+    const searchInput = document.getElementById('searchInput');
+    searchInput.classList.toggle('active');
+    if (searchInput.classList.contains('active')) {
+        searchInput.focus();
+    }
+}
+
+// Sample product data
+const products = [
+    { name: "Diesel Engine Oil", link: "dieselengineoil.html" },
+    { name: "Petrol Engine Oil", link: "petroloil.html" },
+    { name: "Grease", link: "lithiumgrease.html" },
+    { name: "Coolant", link: "antifreeze.html" },
+    { name: "Brake Fluid", link: "brakefluid.html" },
+    { name: "Turbine Oil", link: "turbine.html" },
+    { name: "Hydraulic Oil", link: "hydraulicoil.html" }
+    
+   
+];
+
+function showSuggestions() {
+    const input = document.getElementById('searchInput').value.toLowerCase();
+    const suggestions = document.getElementById('suggestions');
+    suggestions.innerHTML = '';
+
+    if (input.length > 0) {
+        const filteredProducts = products.filter(product => 
+            product.name.toLowerCase().includes(input)
+        );
+
+        if (filteredProducts.length > 0) {
+            filteredProducts.forEach(product => {
+                const div = document.createElement('div');
+                div.textContent = product.name;
+                div.classList.add('suggestion-item'); // Add a class for easier identification
+                div.onclick = () => {
+                    window.location.href = product.link;
+                };
+                suggestions.appendChild(div);
+            });
+            suggestions.style.display = 'block';
+        } else {
+            suggestions.style.display = 'none';
+        }
+    } else {
+        suggestions.style.display = 'none';
+    }
+}
+
+// Close search bar and suggestions when clicking outside
+document.addEventListener('click', function(event) {
+    const suggestions = document.getElementById('suggestions');
+    const searchInput = document.getElementById('searchInput');
+    const searchIcon = document.querySelector('.search-icon'); // Get the search icon
+    const searchContainer = document.querySelector('.search-container');
+    
+    // Check if the click is on the search icon (to toggle)
+    if (searchIcon.contains(event.target)) {
+        return; // Let the toggleSearch function handle this
+    }
+    
+    // If search is active and click is outside search area, close it
+    if (searchInput.classList.contains('active') && 
+        !searchInput.contains(event.target) && 
+        !suggestions.contains(event.target) &&
+        !searchIcon.contains(event.target)) {
+        
+        searchInput.classList.remove('active'); // Close the search bar
+        suggestions.style.display = 'none'; // Hide suggestions
+    }
+});
+
+// Prevent clicks within the search container from closing it
+document.querySelector('.search-container').addEventListener('click', function(event) {
+    event.stopPropagation();
+});
+
+    </script>
+        </nav>
+    </header>
+
+    <div class="fixed-contact">
+        <a href="tel:+968 7831 0160" class="phone-icon" target="_blank">
+            <img src="images/icons8-phone.gif" alt="Phone">
+        </a>
+        <a href="https://wa.me/+96878310160" class="whatsapp-icon" target="_blank">
+            <img src="images/icons8-whatsapp.gif" alt="WhatsApp">
+        </a>
+    </div>
+
+    <section class="product-details">
+        <h1 class="product-title">AUTOMATIC TRANSMISSION FLUID</h1>
+        <div class="product-container">
+            <div class="product-image">
+                <div class="slider">
+                    <img src="images/coveratfp.png" alt="Brake Fluid DOT-3">
+                  
+                </div>
+            </div>
+            <div class="product-info">
+                <h2>AUTOMATIC TRANSMISSION FLUID</h2>
+                <table>
+                    <tr><td><b>Product Brand</b></td><td>Span-X</td></tr>
+                    <tr><td><b>Product Type</b></td><td>SpanX lube ATF oils are formulated from High Quality Base Oil.</td></tr>
+                    <tr><td><b>Suitable For</b></td><td>All Heavy Duty AUTOMATIC TRANSMISSION,Power Steering Unit,Hydraulic Systems</td></tr>
+                    <tr><td><b>Available Variants</b></td><td>SAE90, SAE140, SAE85W90, SAE85W140, SAE80W90, SAE80W140, SAE75W90, 75W140</td></tr>
+                    <tr><td><b>Performance Standards</b></td><td>TYPE - A, Dex 11 & Dex111</td></tr>
+                    <tr><td><b>Key Benefits</b></td><td>Enhanced to smoothest Power Steering, Suitable for Hydraulic System.</td></tr>
+                    <tr><td><b>Packaging Options</b></td><td>1L | 4L | 5L | 20L | 25L | 200L | 208L | Bulk</td></tr>
+                </table>
+                
+                <button class="enquiry-btn" onclick="document.getElementById('footer').scrollIntoView({behavior: 'smooth'});">Enquiry Now!</button>
+                </div>
+        </div></section>
+        
+      <!-- Bottles Container -->
+      <div class="container">
+        <div class="product-box">
+            <img src="images/atf1leee (1).png" alt="Bottle 1">
+            <h3>AUTOMATIC TRANSMISSION FLUID</h3>
+            <p>1 LITRE</p>
+            <button class="know-more-btn">Know More</button>
+        </div>
+        <div class="product-box">
+            <img src="images/atf4lee.jpg" alt="Bottle 2">
+            <h3>AUTOMATIC TRANSMISSION FLUID</h3>
+            <p>4 LITRE</p>
+            <button class="know-more-btn">Know More</button>
+        </div>
+        <div class="product-box">
+            <img src="images/atf5lee.jpg" alt="Bottle 3">
+            <h3>AUTOMATIC TRANSMISSION FLUID</h3>
+            <p>5 LITRE</p>
+            <button class="know-more-btn">Know More</button>
+        </div>
+       
+        
+        <div class="product-box">
+            <img src="images/gear208.jpg" alt="Bottle 7">
+            <h3>AUTOMATIC TRANSMISSION FLUID</h3>
+            <p>208 LITRE</p>
+            <button class="know-more-btn">Know More</button>
+        </div>
+       
+    </div>
+
+    <div id="imageModal" class="modal">
+        <span class="close-btn">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+</div>
+<script>// Get the modal and modal image elements
+    const modal = document.getElementById("imageModal");
+    const modalImage = document.getElementById("modalImage");
+    const closeBtn = document.querySelector(".close-btn");
+    
+    // Function to open the modal with the clicked image
+    function openModal(imageSrc) {
+        modal.style.display = "block";
+        modalImage.src = imageSrc;
+    }
+    
+    // Function to close the modal
+    function closeModal() {
+        modal.style.display = "none";
+    }
+    
+    // Add click event listeners to all "Know More" buttons
+    document.querySelectorAll(".know-more-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            const imageSrc = this.parentElement.querySelector("img").src; // Get the image src from the product box
+            openModal(imageSrc);
+        });
+    });
+    
+    // Close the modal when the close button is clicked
+    closeBtn.addEventListener("click", closeModal);
+    
+    // Close the modal when clicking outside the image
+    window.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });</script>
+    
+
+    <div class="awareness-section">
+        <h2 class="section-title">How to Use Automatic Transmission Fluid in Your Vehicle</h2>
+        <div class="awareness-content">
+            <div class="awareness-image">
+                <img src="images/autotran.jpg" alt="Automatic Transmission Fluid Change">
+            </div>
+            <div class="awareness-text">
+                <h3>Step-by-Step Guide</h3>
+                <div class="steps-container">
+                    <div class="step-box">
+                        <div class="step-number">1</div>
+                        <h4>Check Specifications</h4>
+                        <p>Refer to your vehicle's owner manual for the correct ATF type and capacity requirements.</p>
+                    </div>
+                    <div class="step-box">
+                        <div class="step-number">2</div>
+                        <h4>Prepare Your Vehicle</h4>
+                        <p>Ensure the vehicle is on level ground, the engine is warm, and the parking brake is engaged.</p>
+                    </div>
+                    <div class="step-box">
+                        <div class="step-number">3</div>
+                        <h4>Drain Old Fluid</h4>
+                        <p>Remove the transmission pan or drain plug to allow old fluid to drain completely.</p>
+                    </div>
+                    <div class="step-box">
+                        <div class="step-number">4</div>
+                        <h4>Replace Filter</h4>
+                        <p>Remove and replace the transmission filter to ensure clean fluid flow.</p>
+                    </div>
+                    <div class="step-box">
+                        <div class="step-number">5</div>
+                        <h4>Add New Fluid</h4>
+                        <p>Fill with our premium automatic transmission fluid to the recommended level using a funnel.</p>
+                    </div>
+                    <div class="step-box">
+                        <div class="step-number">6</div>
+                        <h4>Check Level</h4>
+                        <p>Run the engine, shift through gears, and check the fluid level using the dipstick. Top up if necessary.</p>
+                    </div>
+                </div>
+                
+                <div class="maintenance-tips">
+                    <h3>Maintenance Tips</h3>
+                    <ul>
+                        <li><span class="tip-icon">⏱️</span> <strong>Change Intervals:</strong> Replace ATF every 30,000-60,000 km (depending on manufacturer recommendations)</li>
+                        <li><span class="tip-icon">📊</span> <strong>Regular Checks:</strong> Check fluid level and condition monthly</li>
+                        <li><span class="tip-icon">⚠️</span> <strong>Warning Signs:</strong> Watch for slipping gears, rough shifting, or burnt smell</li>
+                        <li><span class="tip-icon">♻️</span> <strong>Disposal:</strong> Properly recycle used transmission fluid at approved collection centers</li>
+                    </ul>
+                </div>
+                
+                <div class="benefits-box">
+                    <h3>Benefits of Premium Automatic Transmission Fluid</h3>
+                    <div class="benefits-grid">
+                        <div class="benefit">
+                            <span class="benefit-icon">🛡️</span>
+                            <p>Enhanced transmission protection</p>
+                        </div>
+                        <div class="benefit">
+                            <span class="benefit-icon">🔥</span>
+                            <p>Better temperature stability</p>
+                        </div>
+                        <div class="benefit">
+                            <span class="benefit-icon">⚙️</span>
+                            <p>Smooth and reliable shifting</p>
+                        </div>
+                        <div class="benefit">
+                            <span class="benefit-icon">💧</span>
+                            <p>Extended transmission life</p>
+                        </div>
+                        <div class="benefit">
+                            <span class="benefit-icon">🌡️</span>
+                            <p>Reduced friction and heat buildup</p>
+                        </div>
+                        <div class="benefit">
+                            <span class="benefit-icon">✨</span>
+                            <p>Improved fuel efficiency</p>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <a href="images/Automatic_Transmission_Fluid_Guide.pdf" class="download-btn">Download Complete Guide</a>
+            </div>
+        </div>
+    </div>
+    
+
+      
+
+    </section>
+     
+    </section>
+    
+    <footer id="footer">
+        <div class="footer-container">
+          <div class="footer-grid">
+            <div class="footer-section quick-links">
+              <h3>Quick Links</h3>
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </div>
+      
+            <div class="footer-section address">
+              <h3>Address</h3>
+              <p>AL MISFA, PO.BOX-2114, PC-133<br>SULTANATE OF OMAN</p>
+            </div>
+      
+            <div class="footer-section contact-info">
+              <h3>Contact</h3>
+              <p><a href="tel:+96878310160">+968 7831 0160</a></p>
+              <p><a href="tel:+96899888388">+968 9988 8388</a></p>
+              <p><a href="tel:+96876302027">+968 7630 2027</a></p>
+              <p><a href="tel:+96894313997">+968 9431 3997</a></p>
+              <p>Email: <a href="mailto:spanxlubes@gmail.com">spanxlubes@gmail.com</a></p>
+            </div>
+      
+            <div class="footer-section follow-us">
+              <h3>Follow Us</h3>
+              <a href="https://www.instagram.com/spanxlubes?igsh=MTA3bzg3ZnJsc3VpeA==">Facebook</a><br>
+              <a href="https://www.instagram.com/spanxlubes?igsh=MTA3bzg3ZnJsc3VpeA==">Instagram</a>
+            </div>
+      
+            <div class="footer-section contact-us">
+              <h3>Contact Us</h3>
+              <form action="https://api.web3forms.com/submit" method="POST" onsubmit="return validateForm()">
+                <input type="hidden" name="access_key" value="3c980544-1eb9-4c02-9ddd-e0d98ed524dd">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="message" placeholder="Message" required></textarea>
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 Spanx. All rights reserved.</p>
+        </div>
+      </footer>
+      
+      
+    
+    
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.style.display = 'none';
+            });
+            document.getElementById(tabId).style.display = 'block';
+            
+            document.querySelectorAll('.tab-btn').forEach(button => {
+                button.classList.remove('active');
+            });
+            document.querySelector(`[onclick="showTab('${tabId}')"]`).classList.add('active');
+        }
+    </script>
+    </main>
+    <script src="script.js"></script>
+    </body>
+    </html>
+    
+      
